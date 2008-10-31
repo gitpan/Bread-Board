@@ -15,7 +15,7 @@ use Bread::Board::Dependency;
 
 use Bread::Board::LifeCycle::Singleton;
 
-our $VERSION   = '0.03';
+our $VERSION   = '0.04';
 our $AUTHORITY = 'cpan:STEVAN';
 
 my @exports = qw[
@@ -75,7 +75,8 @@ sub wire_names { +{ map { $_ => depends_on($_) } @_ }; }
 
 sub depends_on ($) {
     my $path = shift;
-    Bread::Board::Dependency->new(service_path => ('../../' . $path));
+#    $path =~ s{^(?!/)}{../../};
+    Bread::Board::Dependency->new(service_path => $path);    
 }
 
 1;
