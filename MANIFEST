@@ -15,6 +15,7 @@ lib/Bread/Board/Dependency.pm
 lib/Bread/Board/Dumper.pm
 lib/Bread/Board/LifeCycle.pm
 lib/Bread/Board/LifeCycle/Singleton.pm
+lib/Bread/Board/LifeCycle/Singleton/WithParameters.pm
 lib/Bread/Board/Literal.pm
 lib/Bread/Board/Service.pm
 lib/Bread/Board/Service/Deferred.pm
@@ -25,7 +26,7 @@ lib/Bread/Board/SetterInjection.pm
 lib/Bread/Board/Traversable.pm
 lib/Bread/Board/Types.pm
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 META.yml
 README
 t/000_load.t
@@ -45,4 +46,5 @@ t/026_sugar_remove.t
 t/030_lifecycle_singleton.t
 t/040_circular_dependencies.t
 t/041_parameter_cache_handling.t
+t/042_parameter_cache_with_singleton.t
 t/pod.t

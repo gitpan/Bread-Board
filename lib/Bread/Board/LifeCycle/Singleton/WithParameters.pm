@@ -1,35 +1,52 @@
-package Bread::Board::LifeCycle::Singleton;
+package Bread::Board::LifeCycle::Singleton::WithParameters;
 use Moose::Role;
+use MooseX::AttributeHelpers;
 
 with 'Bread::Board::LifeCycle';
 
 our $VERSION   = '0.08';
 our $AUTHORITY = 'cpan:STEVAN';
 
-has 'instance' => (
+has 'instances' => (
+    metaclass => 'Collection::Hash',
     is        => 'rw',
-    isa       => 'Any',
-    predicate => 'has_instance',
-    clearer   => 'flush_instance'
+    isa       => 'HashRef',
+    lazy      => 1,
+    default   => sub { +{} },
+    clearer   => 'flush_instances',
+    provides  => {
+        'exists' => 'has_instance_at_key',
+        'get'    => 'get_instance_at_key',
+        'set'    => 'set_instance_at_key',
+    }
 );
 
 around 'get' => sub {
     my $next = shift;
     my $self = shift;
+    my $key  = $self->generate_instance_key(@_);
 
     # return it if we got it ...
-    return $self->instance if $self->has_instance;
+    return $self->get_instance_at_key($key)
+        if $self->has_instance_at_key($key);
 
     # otherwise fetch it ...
     my $instance = $self->$next(@_);
 
     # if we get a copy, and our copy
     # has not already been set ...
-    $self->instance($instance) unless $self->has_instance;
+    $self->set_instance_at_key($key => $instance)
+        unless $self->has_instance_at_key($key);
 
     # return whatever we have ...
-    return $self->instance;
+    return $self->get_instance_at_key($key);
 };
+
+sub generate_instance_key {
+    my ($self, @args) = @_;
+    return "$self" unless @args;
+    return join "|" => sort map { "$_" } @args
+}
 
 no Moose::Role; 1;
 
@@ -39,7 +56,7 @@ __END__
 
 =head1 NAME
 
-Bread::Board::LifeCycle::Singleton
+Bread::Board::LifeCycle::Singleton::WithParameters
 
 =head1 DESCRIPTION
 
