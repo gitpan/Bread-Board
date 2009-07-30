@@ -4,13 +4,14 @@ use Moose::Role;
 use Bread::Board::Types;
 use Bread::Board::Service::Deferred;
 
-our $VERSION   = '0.08';
+our $VERSION   = '0.09';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Service';
 
 has 'dependencies' => (
     metaclass => 'Collection::Hash',
+    traits    => ['Clone'],
     is        => 'rw',
     isa       => 'Bread::Board::Service::Dependencies',
     lazy      => 1,
