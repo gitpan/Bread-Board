@@ -1,5 +1,6 @@
 package Bread::Board;
 use Moose;
+
 use Bread::Board::Types;
 use Bread::Board::ConstructorInjection;
 use Bread::Board::SetterInjection;
@@ -8,27 +9,14 @@ use Bread::Board::Literal;
 use Bread::Board::Container;
 use Bread::Board::Dependency;
 use Bread::Board::LifeCycle::Singleton;
-use Sub::Exporter -setup => {
-    exports => [ qw( as container depends_on service wire_names ) ],
-    groups  => { default => [':all'] }
-};
+
+use Moose::Exporter;
+Moose::Exporter->setup_import_methods(
+    as_is => [qw( as container depends_on service wire_names )],
+);
 
 our $AUTHORITY = 'cpan:STEVAN';
-our $VERSION   = '0.09';
-
-sub unimport {
-    my $package = caller(0);
-    foreach my $name qw( as container depends_on service wire_names ) {
-        no strict 'refs';
-
-        if ( defined &{ $package . '::' . $name } ) {
-            my $sub = \&{ $package . '::' . $name };
-            next unless \&{$name} == $sub;
-
-            delete ${ $package . '::' }{$name};
-        }
-    }
-}
+our $VERSION   = '0.10';
 
 sub as (&) { $_[0] }
 
@@ -135,7 +123,7 @@ Bread::Board - A solderless way to wire up you application components
 
   no Bread::Board; # removes keywords
 
-  $c->fetch('application')->run;
+  $c->fetch('application')->get->run;
 
 =head1 DESCRIPTION
 
@@ -206,6 +194,9 @@ F<t/02*_sugar.t> tests are the most illustrative IMO).
 
 =head1 ACKNOWLEDGEMENTS
 
+Thanks to Daisuke Maki for his contributions and for really
+pushing the development of this module along.
+
 Chuck "sprongie" Adams, for testing/using early (pre-release)
 versions of this module, and some good suggestions for naming
 it.
@@ -237,7 +228,7 @@ Stevan Little E<lt>stevan@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2009 by Infinity Interactive, Inc.
+Copyright 2007-2010 by Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 

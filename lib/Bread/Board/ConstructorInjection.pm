@@ -3,20 +3,30 @@ use Moose;
 
 use Bread::Board::Types;
 
-our $VERSION   = '0.09';
+our $VERSION   = '0.10';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Service::WithClass',
      'Bread::Board::Service::WithDependencies',
      'Bread::Board::Service::WithParameters';
 
+has 'constructor_name' => (
+    is       => 'rw',
+    isa      => 'Str',
+    lazy     => 1,
+    builder  => '_build_constructor_name',
+);
+
+sub _build_constructor_name {
+    my $self = shift;
+
+    eval { $self->class->meta->constructor_name } || 'new';
+}
+
 sub get {
     my $self = shift;
 
-    my $constructor = eval { $self->class->meta->constructor_name };
-
-    $constructor ||= 'new';
-
+    my $constructor = $self->constructor_name;
     $self->class->$constructor( %{ $self->params } );
 }
 
@@ -54,7 +64,7 @@ Stevan Little E<lt>stevan@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2009 by Infinity Interactive, Inc.
+Copyright 2007-2010 by Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 

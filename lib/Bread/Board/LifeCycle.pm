@@ -1,7 +1,7 @@
 package Bread::Board::LifeCycle;
 use Moose::Role;
 
-our $VERSION   = '0.09';
+our $VERSION   = '0.10';
 our $AUTHORITY = 'cpan:STEVAN';
 
 no Moose::Role; 1;
@@ -28,7 +28,7 @@ Stevan Little E<lt>stevan@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2009 by Infinity Interactive, Inc.
+Copyright 2007-2010 by Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 

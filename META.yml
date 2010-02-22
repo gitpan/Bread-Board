@@ -3,14 +3,17 @@ abstract: 'A solderless way to wire up you application components'
 author:
   - 'Stevan Little <stevan@iinteractive.com>'
 build_requires:
+  ExtUtils::MakeMaker: 6.42
   Test::Exception: 0.21
   Test::More: 0.62
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.71'
+generated_by: 'Module::Install version 0.91'
 license: perl
 meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.3.html
-  version: 1.3
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
 name: Bread-Board
 no_index:
   directory:
@@ -23,6 +26,6 @@ requires:
   MooseX::Clone: 0.04
   MooseX::Param: 0.02
   MooseX::Params::Validate: 0.12
-  Sub::Exporter: 0.982
-tests: t/*.t
-version: 0.09
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.10
