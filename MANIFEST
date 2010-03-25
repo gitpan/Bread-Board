@@ -53,5 +53,5 @@ t/100_clone_w_constructor_injection.t
 t/101_clone_w_setter_injection.t
 t/102_clone_w_block_injection.t
 t/110_clone_w_singleton.t
+t/200_example_code.t
 t/author/pod.t
-t/pod.t
