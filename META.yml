@@ -1,5 +1,5 @@
 ---
-abstract: 'A solderless way to wire up you application components'
+abstract: 'A solderless way to wire up your application components'
 author:
   - 'Stevan Little <stevan@iinteractive.com>'
 build_requires:
@@ -9,7 +9,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.92'
+generated_by: 'Module::Install version 0.91'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -20,12 +20,11 @@ no_index:
     - inc
     - t
 requires:
-  Class::MOP: 0.91
-  Moose: 0.87
-  MooseX::AttributeHelpers: 0.21
-  MooseX::Clone: 0.04
+  Class::MOP: 1.00
+  Moose: 1.00
+  MooseX::Clone: 0.05
   MooseX::Param: 0.02
-  MooseX::Params::Validate: 0.12
+  MooseX::Params::Validate: 0.14
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.11
+version: 0.12
