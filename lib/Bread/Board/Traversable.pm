@@ -1,7 +1,7 @@
 package Bread::Board::Traversable;
 use Moose::Role;
 
-our $VERSION   = '0.12';
+our $VERSION   = '0.13';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'MooseX::Clone';
@@ -65,7 +65,8 @@ sub _get_container_or_service {
 
     if ($c->does('Bread::Board::Service')) {
         return $c                           if $c->name eq $name;
-    } elsif ($c->isa('Bread::Board::Container')) {
+    }
+    elsif ($c->isa('Bread::Board::Container')) {
         return $c                           if $c->name eq $name;
         return $c->get_sub_container($name) if $c->has_sub_container($name);
         return $c->get_service($name)       if $c->has_service($name);

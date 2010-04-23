@@ -3,8 +3,10 @@ use Moose;
 
 use Bread::Board::Container;
 
-our $VERSION   = '0.12';
+our $VERSION   = '0.13';
 our $AUTHORITY = 'cpan:STEVAN';
+
+with 'Bread::Board::Traversable';
 
 has 'name' => (
     is       => 'rw',
@@ -38,14 +40,12 @@ has 'container' => (
         has_sub_container
         get_sub_container_list
         has_sub_containers
-
-        parent
-        detach_from_parent
-        has_parent
-
-        get_root_container
     ]]
 );
+
+sub fetch {
+    die "Cannot fetch from a parameterized container";
+}
 
 sub create {
     my ($self, %params) = @_;
