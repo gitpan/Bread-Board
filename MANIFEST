@@ -27,6 +27,7 @@ lib/Bread/Board/Manual/Example/FormSensible.pod
 lib/Bread/Board/Manual/Example/LogDispatch.pod
 lib/Bread/Board/Service.pm
 lib/Bread/Board/Service/Deferred.pm
+lib/Bread/Board/Service/Deferred/Thunk.pm
 lib/Bread/Board/Service/WithClass.pm
 lib/Bread/Board/Service/WithDependencies.pm
 lib/Bread/Board/Service/WithParameters.pm
@@ -60,6 +61,7 @@ t/040_circular_dependencies.t
 t/041_parameter_cache_handling.t
 t/042_parameter_cache_with_singleton.t
 t/043_parameter_leaks.t
+t/044_deferred_parameters.t
 t/050_parameterized_containers.t
 t/051_more_parameterized_containers.t
 t/052_parameterized_in_heirarchy.t

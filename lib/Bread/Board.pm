@@ -17,7 +17,7 @@ Moose::Exporter->setup_import_methods(
 );
 
 our $AUTHORITY = 'cpan:STEVAN';
-our $VERSION   = '0.13';
+our $VERSION   = '0.14';
 
 sub as (&) { $_[0] }
 
@@ -85,7 +85,7 @@ sub service ($@) {
     }
     elsif (scalar(@_) % 2 == 0) {
         my %params = @_;
-        my $type   = $params{type} || (exists $params{block} ? 'Block' : 'Constructor');
+        my $type   = $params{service_type} || (exists $params{block} ? 'Block' : 'Constructor');
         $s =  "Bread::Board::${type}Injection"->new(name => $name, %params);
     }
     else {
@@ -159,7 +159,13 @@ Bread::Board - A solderless way to wire up your application components
 
   no Bread::Board; # removes keywords
 
-  $c->fetch('application')->get->run;
+  # get an instance of MyApplication
+  # from the container
+  my $app = $c->resolve( service => 'application' );
+
+  # now user your MyApplication
+  # as you normally would ...
+  $app->run;
 
 =head1 DESCRIPTION
 

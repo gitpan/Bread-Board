@@ -6,7 +6,7 @@ use Scalar::Util qw(blessed);
 use Bread::Board::Service;
 use Bread::Board::Dependency;
 
-our $VERSION   = '0.13';
+our $VERSION   = '0.14';
 our $AUTHORITY = 'cpan:STEVAN';
 
 enum 'Bread::Board::Service::LifeCycles' => qw[
@@ -53,12 +53,13 @@ coerce 'Bread::Board::Service::Dependencies'
             # as an array
             +{
                 map {
-                    if (!blessed($_)) {
-                        $_ = Bread::Board::Dependency->new(service_path => $_);
+                    my $dep = $_;
+                    if (!blessed($dep)) {
+                        $dep = Bread::Board::Dependency->new(service_path => $dep);
                     }
-                    ($_->isa('Bread::Board::Dependency')
-                        ? ($_->service_name => $_)
-                        : ($_->name         => Bread::Board::Dependency->new(service => $_)))
+                    ($dep->isa('Bread::Board::Dependency')
+                        ? ($dep->service_name => $dep)
+                        : ($dep->name         => Bread::Board::Dependency->new(service => $dep)))
                 } @{$_[0]}
             }
         };

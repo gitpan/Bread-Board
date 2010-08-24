@@ -3,7 +3,7 @@ use Moose;
 
 use Bread::Board::Container;
 
-our $VERSION   = '0.13';
+our $VERSION   = '0.14';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Traversable';
@@ -43,9 +43,8 @@ has 'container' => (
     ]]
 );
 
-sub fetch {
-    die "Cannot fetch from a parameterized container";
-}
+sub fetch   { die "Cannot fetch from a parameterized container";   }
+sub resolve { die "Cannot resolve from a parameterized container"; }
 
 sub create {
     my ($self, %params) = @_;
