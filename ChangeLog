@@ -1,5 +1,45 @@
 Revision history for Perl extension Bread::Board
 
+0.15 Thurs. Sept. 30, 2010
+    * Bread::Board::Service
+      - removed the MooseX::Param dependency
+        and implemented it internally so that
+        we have more control
+
+    * Bread::Board::Types
+      - the Bread::Board::Service::Dependencies
+        type now can also coerce ArrayRef[Str]
+        and HashRef[Str] types correctly (doy)
+
+    * Bread::Board::Service::WithDependencies
+      - we now only create a ::Deferred::Thunk
+        object if we have non-optional params
+    * Bread::Board::Service::WithParameters
+      - added the has_required_parameters
+        method, to see if there are any
+        non-optional parameters
+        - added tests for both the above
+
+    !! NEW EXPERIMENTAL FEATURE !!
+
+    * Bread::Board
+      - added the typemap and infer keyword
+        to help in the mapping of types and
+        construction of inferred services
+        - added tests for this
+
+    * Bread::Board::Container
+      - added the typemap feature and added
+        the ->resolve( type => $type ) call
+        - added tests for this
+
+    * Bread::Board::Service::Inferred
+      - added this and tests for it
+
+    * Bread::Board::Manual::Concepts::Typemap
+      - added this to help explain the
+        typemap feature
+
 0.14 Tues. Aug. 24, 2010
     * Bread::Board::Container
       - added the ->resolve method to replace

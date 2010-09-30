@@ -4,7 +4,7 @@ use MooseX::Params::Validate qw(validated_hash);
 
 use Bread::Board::Types;
 
-our $VERSION   = '0.14';
+our $VERSION   = '0.15';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Service';
@@ -38,7 +38,7 @@ before 'get' => sub {
 after 'get' => sub {
     my $self = shift;
     return unless $self->_has_parameter_keys_to_remove;
-    map { delete $self->params->{$_} } @{ $self->_parameter_keys_to_remove };
+    map { $self->_clear_param( $_ ) } @{ $self->_parameter_keys_to_remove };
     $self->_clear_parameter_keys_to_remove;
 };
 
@@ -57,6 +57,11 @@ sub check_parameters {
         (MX_PARAMS_VALIDATE_CACHE_KEY => Scalar::Util::refaddr($self))
     )) if $self->has_parameters;
     return ();
+}
+
+sub has_required_parameters {
+    my $self = shift;
+    scalar grep { ! $_->{optional} } values %{ $self->parameters };
 }
 
 no Moose::Role; 1;
@@ -80,6 +85,8 @@ Bread::Board::Service::WithParameters
 =item B<parameters>
 
 =item B<has_parameters>
+
+=item B<has_required_parameters>
 
 =item B<check_parameters>
 

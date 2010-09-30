@@ -23,8 +23,7 @@ requires:
   Class::MOP: 1.00
   Moose: 1.00
   MooseX::Clone: 0.05
-  MooseX::Param: 0.02
   MooseX::Params::Validate: 0.14
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.14
+version: 0.15
