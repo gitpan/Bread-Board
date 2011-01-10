@@ -1,7 +1,7 @@
 package Bread::Board::Traversable;
 use Moose::Role;
 
-our $VERSION   = '0.15';
+our $VERSION   = '0.16';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'MooseX::Clone';
@@ -72,7 +72,7 @@ sub _get_container_or_service {
         return $c->get_service($name)       if $c->has_service($name);
     }
 
-    confess "Could not find container or service for $name";
+    confess "Could not find container or service for $name in " . $c->name;
 }
 
 no Moose::Role; 1;
@@ -117,7 +117,7 @@ Stevan Little E<lt>stevan@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2010 by Infinity Interactive, Inc.
+Copyright 2007-2011 by Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 

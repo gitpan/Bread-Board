@@ -27,7 +27,7 @@ Moose::Exporter->setup_import_methods(
 );
 
 our $AUTHORITY = 'cpan:STEVAN';
-our $VERSION   = '0.15';
+our $VERSION   = '0.16';
 
 sub as (&) { $_[0] }
 
@@ -95,8 +95,15 @@ sub service ($@) {
     }
     elsif (scalar(@_) % 2 == 0) {
         my %params = @_;
-        my $type   = $params{service_type} || (exists $params{block} ? 'Block' : 'Constructor');
-        $s = "Bread::Board::${type}Injection"->new(name => $name, %params);
+        if ($params{service_class}) {
+            ($params{service_class}->does('Bread::Board::Service'))
+                || confess "The service class must do the Bread::Board::Service role";
+            $s = $params{service_class}->new(name => $name, %params);
+        }
+        else {
+            my $type   = $params{service_type} || (exists $params{block} ? 'Block' : 'Constructor');
+            $s = "Bread::Board::${type}Injection"->new(name => $name, %params);
+        }
     }
     else {
         confess "I don't understand @_";
@@ -316,7 +323,7 @@ Stevan Little E<lt>stevan@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2010 by Infinity Interactive, Inc.
+Copyright 2007-2011 by Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 

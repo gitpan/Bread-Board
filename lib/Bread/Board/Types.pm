@@ -6,7 +6,7 @@ use Scalar::Util qw(blessed);
 use Bread::Board::Service;
 use Bread::Board::Dependency;
 
-our $VERSION   = '0.15';
+our $VERSION   = '0.16';
 our $AUTHORITY = 'cpan:STEVAN';
 
 enum 'Bread::Board::Service::LifeCycles' => qw[
@@ -36,14 +36,24 @@ subtype 'Bread::Board::Service::Dependencies'
     => as 'HashRef[Bread::Board::Dependency]';
 
 coerce 'Bread::Board::Service::Dependencies'
-    => from 'HashRef[Bread::Board::Service | Bread::Board::Dependency | Str]'
+    => from 'HashRef[Bread::Board::Service | Bread::Board::Dependency | Str | HashRef]'
         => via {
             +{
                 map {
 
                     my $dep = $_[0]->{$_};
                     if (!blessed($dep)) {
-                        $dep = Bread::Board::Dependency->new(service_path => $dep);
+                        if (ref $dep) {
+                            my ($service_path)   = keys %$dep;
+                            my ($service_params) = values %$dep;
+                            $dep = Bread::Board::Dependency->new(
+                                service_path   => $service_path,
+                                service_params => $service_params
+                            );
+                        }
+                        else {
+                            $dep = Bread::Board::Dependency->new(service_path => $dep);
+                        }
                     }
                     ($_ => ($dep->isa('Bread::Board::Dependency')
                             ? $dep
@@ -51,7 +61,7 @@ coerce 'Bread::Board::Service::Dependencies'
                 } keys %{$_[0]}
             }
         }
-    => from 'ArrayRef[Bread::Board::Service | Bread::Board::Dependency | Str]'
+    => from 'ArrayRef[Bread::Board::Service | Bread::Board::Dependency | Str | HashRef]'
         => via {
             # auto-wire the dependencies with
             # the service name if we get them
@@ -60,7 +70,17 @@ coerce 'Bread::Board::Service::Dependencies'
                 map {
                     my $dep = $_;
                     if (!blessed($dep)) {
-                        $dep = Bread::Board::Dependency->new(service_path => $dep);
+                        if (ref $dep) {
+                            my ($service_path)   = keys %$dep;
+                            my ($service_params) = values %$dep;
+                            $dep = Bread::Board::Dependency->new(
+                                service_path   => $service_path,
+                                service_params => $service_params
+                            );
+                        }
+                        else {
+                            $dep = Bread::Board::Dependency->new(service_path => $dep);
+                        }
                     }
                     ($dep->isa('Bread::Board::Dependency')
                         ? ($dep->service_name => $dep)
@@ -101,7 +121,7 @@ Stevan Little E<lt>stevan@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2010 by Infinity Interactive, Inc.
+Copyright 2007-2011 by Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 

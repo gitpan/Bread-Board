@@ -7,7 +7,7 @@ use Bread::Board::Types;
 use Bread::Board::Service::Deferred;
 use Bread::Board::Service::Deferred::Thunk;
 
-our $VERSION   = '0.15';
+our $VERSION   = '0.16';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Service';
@@ -64,7 +64,13 @@ sub resolve_dependencies {
                 # since we can't pass in parameters here,
                 # we return a deferred thunk and you can do
                 # with it what you will.
-                if ( $service->does('Bread::Board::Service::WithParameters') && $service->has_required_parameters ) {
+                if (
+                    $service->does('Bread::Board::Service::WithParameters')
+                    &&
+                    $service->has_required_parameters
+                    &&
+                    !$dependency->has_service_params
+                   ) {
                     $deps{$key} = Bread::Board::Service::Deferred::Thunk->new(
                         thunk => sub {
                             my %params = @_;
@@ -77,9 +83,15 @@ sub resolve_dependencies {
                 }
                 else {
                     $service->lock;
-                    try     { $deps{$key} = $service->get }
-                    finally { $service->unlock }
-                    catch   { die $_ };
+                    try {
+                        $deps{$key} = $dependency->has_service_params
+                            ? $service->get( %{ $dependency->service_params })
+                            : $service->get;
+                    } finally {
+                        $service->unlock
+                    } catch {
+                        die $_
+                    };
                 }
             }
         }
@@ -133,7 +145,7 @@ Stevan Little E<lt>stevan@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2010 by Infinity Interactive, Inc.
+Copyright 2007-2011 by Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 

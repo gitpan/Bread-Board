@@ -64,11 +64,13 @@ t/041_parameter_cache_handling.t
 t/042_parameter_cache_with_singleton.t
 t/043_parameter_leaks.t
 t/044_deferred_parameters.t
+t/045_parameters_in_dependency.t
 t/050_parameterized_containers.t
 t/051_more_parameterized_containers.t
 t/052_parameterized_in_heirarchy.t
 t/060_extend_w_sugar.t
 t/061_extends_w_sugar_and_inheritance.t
+t/062_service_class_w_sugar.t
 t/070_with_basic_typemap.t
 t/071_typemap_with_basic_infer.t
 t/072_typemap_with_more_infer.t
@@ -77,6 +79,7 @@ t/075_complex_typemap_example.t
 t/076_more_complex_typemap.t
 t/077_more_complex_typemap_w_roles.t
 t/078_complex_typemap_w_error.t
+t/079_depending_on_type.t
 t/100_clone_w_constructor_injection.t
 t/101_clone_w_setter_injection.t
 t/102_clone_w_block_injection.t

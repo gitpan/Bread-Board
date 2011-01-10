@@ -5,7 +5,7 @@ use MooseX::Params::Validate;
 
 use Bread::Board::Types;
 
-our $VERSION   = '0.15';
+our $VERSION   = '0.16';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Traversable';
@@ -208,7 +208,7 @@ Stevan Little E<lt>stevan@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2010 by Infinity Interactive, Inc.
+Copyright 2007-2011 by Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 

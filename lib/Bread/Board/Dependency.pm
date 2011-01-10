@@ -3,7 +3,7 @@ use Moose;
 
 use Bread::Board::Service;
 
-our $VERSION   = '0.15';
+our $VERSION   = '0.16';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Traversable';
@@ -24,6 +24,12 @@ has 'service_name' => (
             || confess "Could not determine service name without service path";
         (split '/' => $self->service_path)[-1];
     }
+);
+
+has 'service_params' => (
+    is        => 'ro',
+    isa       => 'HashRef',
+    predicate => 'has_service_params'
 );
 
 has 'service' => (
@@ -87,7 +93,7 @@ Stevan Little E<lt>stevan@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2010 by Infinity Interactive, Inc.
+Copyright 2007-2011 by Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 

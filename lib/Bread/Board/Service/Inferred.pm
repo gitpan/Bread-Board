@@ -2,7 +2,7 @@ package Bread::Board::Service::Inferred;
 use Moose;
 use Moose::Util::TypeConstraints 'find_type_constraint';
 
-our $VERSION   = '0.15';
+our $VERSION   = '0.16';
 our $AUTHORITY = 'cpan:STEVAN';
 
 use Try::Tiny;
@@ -148,7 +148,7 @@ sub infer_service {
     # injection makes sense here.
     # - SL
     my $service = Bread::Board::ConstructorInjection->new(
-        name => ($type . '::__AUTO__'),
+        name => ('type:' . $type),
         %params
     );
 
@@ -194,7 +194,7 @@ Stevan Little E<lt>stevan.little@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2010 Infinity Interactive, Inc.
+Copyright 2010-2011 Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 
