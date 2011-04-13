@@ -4,7 +4,7 @@ use MooseX::Params::Validate qw(validated_hash);
 
 use Bread::Board::Types;
 
-our $VERSION   = '0.17';
+our $VERSION   = '0.18';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Service';
@@ -62,6 +62,11 @@ sub check_parameters {
 sub has_required_parameters {
     my $self = shift;
     scalar grep { ! $_->{optional} } values %{ $self->parameters };
+}
+
+sub has_parameter_defaults {
+    my $self = shift;
+    scalar grep { $_->{default} } values %{ $self->parameters };
 }
 
 no Moose::Role; 1;

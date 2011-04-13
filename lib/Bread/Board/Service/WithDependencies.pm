@@ -7,7 +7,7 @@ use Bread::Board::Types;
 use Bread::Board::Service::Deferred;
 use Bread::Board::Service::Deferred::Thunk;
 
-our $VERSION   = '0.17';
+our $VERSION   = '0.18';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Service';
@@ -69,7 +69,9 @@ sub resolve_dependencies {
                     &&
                     $service->has_required_parameters
                     &&
-                    !$dependency->has_service_params
+                    (not $service->has_parameter_defaults)
+                    &&
+                    (not $dependency->has_service_params)
                    ) {
                     $deps{$key} = Bread::Board::Service::Deferred::Thunk->new(
                         thunk => sub {
