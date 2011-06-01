@@ -5,7 +5,7 @@ use Try::Tiny;
 
 use Bread::Board::Types;
 
-our $VERSION   = '0.18';
+our $VERSION   = '0.19';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Service::WithClass',
@@ -22,7 +22,7 @@ has 'constructor_name' => (
 sub _build_constructor_name {
     my $self = shift;
 
-    try { $self->class->meta->constructor_name } || 'new';
+    try { Class::MOP::class_of($self->class)->constructor_name } || 'new';
 }
 
 sub get {

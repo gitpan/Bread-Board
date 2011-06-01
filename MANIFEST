@@ -1,3 +1,4 @@
+bin/visualize-breadboard
 ChangeLog
 inc/Module/Install.pm
 inc/Module/Install/AuthorTests.pm
@@ -6,6 +7,8 @@ inc/Module/Install/Can.pm
 inc/Module/Install/Fetch.pm
 inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
+inc/Module/Install/Repository.pm
+inc/Module/Install/Scripts.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 lib/Bread/Board.pm
@@ -15,6 +18,8 @@ lib/Bread/Board/Container.pm
 lib/Bread/Board/Container/Parameterized.pm
 lib/Bread/Board/Dependency.pm
 lib/Bread/Board/Dumper.pm
+lib/Bread/Board/GraphViz.pm
+lib/Bread/Board/GraphViz/App.pm
 lib/Bread/Board/LifeCycle.pm
 lib/Bread/Board/LifeCycle/Singleton.pm
 lib/Bread/Board/LifeCycle/Singleton/WithParameters.pm
@@ -27,6 +32,7 @@ lib/Bread/Board/Manual/Example.pod
 lib/Bread/Board/Manual/Example/FormSensible.pod
 lib/Bread/Board/Manual/Example/LogDispatch.pod
 lib/Bread/Board/Service.pm
+lib/Bread/Board/Service/Alias.pm
 lib/Bread/Board/Service/Deferred.pm
 lib/Bread/Board/Service/Deferred/Thunk.pm
 lib/Bread/Board/Service/Inferred.pm
@@ -45,6 +51,7 @@ t/001_constructor_injection.t
 t/002_setter_injection.t
 t/003_block_injection.t
 t/004_block_injection_w_out_class.t
+t/005_alias.t
 t/010_container.t
 t/011_container_path.t
 t/012_container_with_shared_deps.t
@@ -59,6 +66,7 @@ t/027_sugar_w_include.t
 t/028_sugar_w_recursive_inc.t
 t/029_sugar_auto_wire_names.t
 t/030_lifecycle_singleton.t
+t/031_custom_lifecycles.t
 t/040_circular_dependencies.t
 t/041_parameter_cache_handling.t
 t/042_parameter_cache_with_singleton.t
@@ -89,7 +97,9 @@ t/150_deferred_parameters_fail.t
 t/200_example_code.t
 t/201_log_dispatch_example.t
 t/202_form_sensible_example.t
+t/500_graphviz.t
 t/author/pod.t
 t/lib/bad.bb
+t/lib/graphable.bb
 t/lib/logger.bb
 t/lib/my_app.bb

@@ -1,7 +1,7 @@
 package Bread::Board::Service;
 use Moose::Role;
 
-our $VERSION   = '0.18';
+our $VERSION   = '0.19';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Traversable';
@@ -39,10 +39,16 @@ has 'lifecycle' => (
     trigger => sub {
         my ($self, $lifecycle) = @_;
         if ($self->does('Bread::Board::LifeCycle')) {
-            bless $self => ($self->meta->superclasses)[0];
+            my $base = (Class::MOP::class_of($self)->superclasses)[0];
+            Class::MOP::class_of($base)->rebless_instance_back($self);
             return if $lifecycle eq 'Null';
         }
-        ("Bread::Board::LifeCycle::${lifecycle}")->meta->apply($self);
+
+        my $lifecycle_role = $lifecycle =~ /^\+/
+                 ? substr($lifecycle, 1)
+                 : "Bread::Board::LifeCycle::${lifecycle}";
+        Class::MOP::load_class($lifecycle_role);
+        Class::MOP::class_of($lifecycle_role)->apply($self);
     }
 );
 

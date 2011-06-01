@@ -1,7 +1,7 @@
 package Bread::Board::Traversable;
 use Moose::Role;
 
-our $VERSION   = '0.18';
+our $VERSION   = '0.19';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'MooseX::Clone';
@@ -52,6 +52,14 @@ sub fetch {
     my $c = $root;
     while (my $h = shift @path) {
         $c = _get_container_or_service($c, $h);
+    }
+    if (!$self->isa('Bread::Board::Service::Alias')) {
+        my %seen;
+        while ($c->isa('Bread::Board::Service::Alias')) {
+            $c = $c->aliased_from;
+            confess "Cycle detected in aliases" if exists $seen{$c};
+            $seen{$c}++;
+        }
     }
     return $c;
 }
