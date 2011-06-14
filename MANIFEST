@@ -67,6 +67,7 @@ t/028_sugar_w_recursive_inc.t
 t/029_sugar_auto_wire_names.t
 t/030_lifecycle_singleton.t
 t/031_custom_lifecycles.t
+t/032_singleton_cycle.t
 t/040_circular_dependencies.t
 t/041_parameter_cache_handling.t
 t/042_parameter_cache_with_singleton.t
