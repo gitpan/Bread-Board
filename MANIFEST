@@ -74,6 +74,7 @@ t/042_parameter_cache_with_singleton.t
 t/043_parameter_leaks.t
 t/044_deferred_parameters.t
 t/045_parameters_in_dependency.t
+t/046_custom_parameter_service.t
 t/050_parameterized_containers.t
 t/051_more_parameterized_containers.t
 t/052_parameterized_in_heirarchy.t
@@ -95,9 +96,11 @@ t/101_clone_w_setter_injection.t
 t/102_clone_w_block_injection.t
 t/110_clone_w_singleton.t
 t/150_deferred_parameters_fail.t
+t/151_sugar_no_container.t
 t/200_example_code.t
 t/201_log_dispatch_example.t
 t/202_form_sensible_example.t
+t/300_no_new.t
 t/500_graphviz.t
 t/author/pod.t
 t/lib/bad.bb

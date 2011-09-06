@@ -1,5 +1,8 @@
 package Bread::Board;
-use Moose;
+use strict;
+use warnings;
+use Carp qw(confess);
+use Scalar::Util qw(blessed);
 
 use Bread::Board::Types;
 use Bread::Board::ConstructorInjection;
@@ -29,7 +32,7 @@ Moose::Exporter->setup_import_methods(
 );
 
 our $AUTHORITY = 'cpan:STEVAN';
-our $VERSION   = '0.20';
+our $VERSION   = '0.21';
 
 sub as (&) { $_[0] }
 
@@ -110,6 +113,7 @@ sub service ($@) {
     else {
         confess "I don't understand @_";
     }
+    return $s unless defined $CC;
     $CC->add_service($s);
 }
 
@@ -123,7 +127,7 @@ sub alias ($$@) {
         aliased_from_path => $path,
         %params,
     );
-
+    return $s unless defined $CC;
     $CC->add_service($s);
 }
 
@@ -177,9 +181,7 @@ sub depends_on ($) {
     Bread::Board::Dependency->new(service_path => $path);
 }
 
-__PACKAGE__->meta->make_immutable;
-
-no Moose; 1;
+1;
 
 __END__
 
@@ -206,13 +208,14 @@ Bread::Board - A solderless way to wire up your application components
       );
 
       container 'Database' => as {
-          service 'dsn'      => "dbi:sqlite:dbname=my-app.db";
+          service 'dsn'      => "dbi:SQLite:dbname=my-app.db";
           service 'username' => "user234";
           service 'password' => "****";
 
           service 'dbh' => (
               block => sub {
                   my $s = shift;
+                  require DBI;
                   DBI->connect(
                       $s->param('dsn'),
                       $s->param('username'),

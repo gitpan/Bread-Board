@@ -1,11 +1,11 @@
 package Bread::Board::BlockInjection;
 use Moose;
 
-our $VERSION   = '0.20';
+our $VERSION   = '0.21';
 our $AUTHORITY = 'cpan:STEVAN';
 
-with 'Bread::Board::Service::WithDependencies',
-     'Bread::Board::Service::WithParameters';
+with 'Bread::Board::Service::WithParameters',
+     'Bread::Board::Service::WithDependencies';
 
 has 'block' => (
     is       => 'rw',

@@ -5,12 +5,12 @@ use Try::Tiny;
 
 use Bread::Board::Types;
 
-our $VERSION   = '0.20';
+our $VERSION   = '0.21';
 our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Service::WithClass',
-     'Bread::Board::Service::WithDependencies',
-     'Bread::Board::Service::WithParameters';
+     'Bread::Board::Service::WithParameters',
+     'Bread::Board::Service::WithDependencies';
 
 has 'constructor_name' => (
     is       => 'rw',
