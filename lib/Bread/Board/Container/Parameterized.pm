@@ -1,10 +1,14 @@
 package Bread::Board::Container::Parameterized;
+BEGIN {
+  $Bread::Board::Container::Parameterized::AUTHORITY = 'cpan:STEVAN';
+}
+{
+  $Bread::Board::Container::Parameterized::VERSION = '0.22';
+}
 use Moose;
+# ABSTRACT: A parameterized container
 
 use Bread::Board::Container;
-
-our $VERSION   = '0.21';
-our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Traversable';
 
@@ -77,13 +81,17 @@ __PACKAGE__->meta->make_immutable;
 
 no Moose; 1;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
 Bread::Board::Container::Parameterized - A parameterized container
+
+=head1 VERSION
+
+version 0.22
 
 =head1 DESCRIPTION
 
@@ -126,4 +134,22 @@ L<http://www.iinteractive.com>
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=for Pod::Coverage fetch
+resolve
+
+=head1 AUTHOR
+
+Stevan Little <stevan@iinteractive.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Infinity Interactive.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+

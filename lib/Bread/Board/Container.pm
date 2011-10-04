@@ -1,12 +1,15 @@
 package Bread::Board::Container;
+BEGIN {
+  $Bread::Board::Container::AUTHORITY = 'cpan:STEVAN';
+}
+{
+  $Bread::Board::Container::VERSION = '0.22';
+}
 use Moose;
 use Moose::Util::TypeConstraints 'find_type_constraint';
 use MooseX::Params::Validate;
 
 use Bread::Board::Types;
-
-our $VERSION   = '0.21';
-our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Traversable';
 
@@ -61,10 +64,41 @@ has 'type_mappings' => (
     lazy    => 1,
     default => sub{ +{} },
     handles => {
-        'get_type_mapping_for' => 'get',
-        'has_type_mapping_for' => 'exists',
+        '_get_type_mapping_for' => 'get',
+        '_has_type_mapping_for' => 'exists',
+        '_mapped_types'         => 'keys',
     }
 );
+
+sub get_type_mapping_for {
+    my $self = shift;
+    my ($type) = @_;
+
+    return $self->_get_type_mapping_for($type)
+        if $self->_has_type_mapping_for($type);
+
+    for my $possible ($self->_mapped_types) {
+        return $self->_get_type_mapping_for($possible)
+            if $possible->isa($type);
+    }
+
+    return;
+}
+
+sub has_type_mapping_for {
+    my $self = shift;
+    my ($type) = @_;
+
+    return 1
+        if $self->_has_type_mapping_for($type);
+
+    for my $possible ($self->_mapped_types) {
+        return 1
+            if $possible->isa($type);
+    }
+
+    return;
+}
 
 sub add_service {
     my ($self, $service) = @_;
@@ -150,13 +184,17 @@ __PACKAGE__->meta->make_immutable;
 
 no Moose; 1;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
 Bread::Board::Container
+
+=head1 VERSION
+
+version 0.22
 
 =head1 DESCRIPTION
 
@@ -194,6 +232,12 @@ Bread::Board::Container
 
 =item B<resolve ( ?service => $service_name, ?type => $type, ?parameters => { ... } )>
 
+=item B<add_type_mapping_for ( $type_name, $service )>
+
+=item B<get_type_mapping_for ( $type_name )>
+
+=item B<has_type_mapping_for ( $type_name )>
+
 =back
 
 =head1 BUGS
@@ -215,7 +259,22 @@ L<http://www.iinteractive.com>
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=head1 AUTHOR
+
+Stevan Little <stevan@iinteractive.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Infinity Interactive.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+
 
 
 

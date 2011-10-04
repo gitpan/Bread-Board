@@ -1,11 +1,14 @@
 package Bread::Board::Service::WithParameters;
+BEGIN {
+  $Bread::Board::Service::WithParameters::AUTHORITY = 'cpan:STEVAN';
+}
+{
+  $Bread::Board::Service::WithParameters::VERSION = '0.22';
+}
 use Moose::Role;
 use MooseX::Params::Validate qw(validated_hash);
 
 use Bread::Board::Types;
-
-our $VERSION   = '0.21';
-our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Service';
 
@@ -73,13 +76,17 @@ sub has_parameter_defaults {
 
 no Moose::Role; 1;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
 Bread::Board::Service::WithParameters
+
+=head1 VERSION
+
+version 0.22
 
 =head1 DESCRIPTION
 
@@ -92,6 +99,8 @@ Bread::Board::Service::WithParameters
 =item B<parameters>
 
 =item B<has_parameters>
+
+=item B<has_parameter_defaults>
 
 =item B<has_required_parameters>
 
@@ -118,4 +127,19 @@ L<http://www.iinteractive.com>
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=head1 AUTHOR
+
+Stevan Little <stevan@iinteractive.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Infinity Interactive.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+

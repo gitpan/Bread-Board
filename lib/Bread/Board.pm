@@ -1,8 +1,15 @@
 package Bread::Board;
+BEGIN {
+  $Bread::Board::AUTHORITY = 'cpan:STEVAN';
+}
+{
+  $Bread::Board::VERSION = '0.22';
+}
 use strict;
 use warnings;
 use Carp qw(confess);
 use Scalar::Util qw(blessed);
+# ABSTRACT: A solderless way to wire up your application components
 
 use Bread::Board::Types;
 use Bread::Board::ConstructorInjection;
@@ -30,9 +37,6 @@ Moose::Exporter->setup_import_methods(
         infer
     ]],
 );
-
-our $AUTHORITY = 'cpan:STEVAN';
-our $VERSION   = '0.21';
 
 sub as (&) { $_[0] }
 
@@ -183,13 +187,17 @@ sub depends_on ($) {
 
 1;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
 Bread::Board - A solderless way to wire up your application components
+
+=head1 VERSION
+
+version 0.22
 
 =head1 SYNOPSIS
 
@@ -313,6 +321,10 @@ Want to know more? See the L<Bread::Board::Manual>.
 
 =item I<include ($file)>
 
+=item I<alias ($service_name, $service_path, %service_description)>
+
+=item I<set_root_container ($container)>
+
 =back
 
 =head1 ACKNOWLEDGEMENTS
@@ -358,4 +370,19 @@ L<http://www.iinteractive.com>
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=head1 AUTHOR
+
+Stevan Little <stevan@iinteractive.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Infinity Interactive.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+

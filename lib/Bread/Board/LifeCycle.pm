@@ -1,12 +1,15 @@
 package Bread::Board::LifeCycle;
+BEGIN {
+  $Bread::Board::LifeCycle::AUTHORITY = 'cpan:STEVAN';
+}
+{
+  $Bread::Board::LifeCycle::VERSION = '0.22';
+}
 use Moose::Role;
-
-our $VERSION   = '0.21';
-our $AUTHORITY = 'cpan:STEVAN';
 
 no Moose::Role; 1;
 
-__END__
+
 
 =pod
 
@@ -14,7 +17,15 @@ __END__
 
 Bread::Board::LifeCycle
 
+=head1 VERSION
+
+version 0.22
+
 =head1 DESCRIPTION
+
+=head1 NAME
+
+Bread::Board::LifeCycle
 
 =head1 BUGS
 
@@ -35,4 +46,19 @@ L<http://www.iinteractive.com>
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=head1 AUTHOR
+
+Stevan Little <stevan@iinteractive.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Infinity Interactive.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+

@@ -4,14 +4,14 @@ use strict;
 use warnings;
 
 use Test::More;
-use Test::Exception;
 use Test::Moose;
 
-BEGIN {
-    eval "use Log::Dispatch; use Log::Dispatch::File; use Log::Dispatch::Screen;";
-    plan skip_all => "This test requires Log::Dispatch to be installed" if $@;
-    use_ok('Bread::Board');
-}
+use Test::Requires
+    'Log::Dispatch',
+    'Log::Dispatch::File',
+    'Log::Dispatch::Screen';
+
+use Bread::Board;
 
 my $c = container 'Logging' => as {
     service 'Logger' => (

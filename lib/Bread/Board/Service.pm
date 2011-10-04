@@ -1,8 +1,11 @@
 package Bread::Board::Service;
+BEGIN {
+  $Bread::Board::Service::AUTHORITY = 'cpan:STEVAN';
+}
+{
+  $Bread::Board::Service::VERSION = '0.22';
+}
 use Moose::Role;
-
-our $VERSION   = '0.21';
-our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Traversable';
 
@@ -73,13 +76,17 @@ sub unlock { (shift)->is_locked(0) }
 
 no Moose::Role; 1;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
 Bread::Board::Service
+
+=head1 VERSION
+
+version 0.22
 
 =head1 DESCRIPTION
 
@@ -98,6 +105,10 @@ Bread::Board::Service
 =item B<lifecycle>
 
 =item B<get>
+
+=item B<init_params>
+
+=item B<param>
 
 =back
 
@@ -120,4 +131,19 @@ L<http://www.iinteractive.com>
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=head1 AUTHOR
+
+Stevan Little <stevan@iinteractive.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Infinity Interactive.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+

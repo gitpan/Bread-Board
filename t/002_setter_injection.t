@@ -3,28 +3,26 @@
 use strict;
 use warnings;
 
-use Test::More tests => 28;
+use Test::More;
 use Test::Moose;
-use Test::Exception;
+use Test::Fatal;
 
-BEGIN {
-    use_ok('Bread::Board::SetterInjection');    
-    use_ok('Bread::Board::Literal');        
-}
+use Bread::Board::SetterInjection;
+use Bread::Board::Literal;
 
 {
     package Needle;
     use Moose;
-    
+
     package Mexican::Black::Tar;
     use Moose;
-    
+
     package Addict;
     use Moose;
-    
+
     has 'needle' => (is => 'rw');
     has 'spoon'  => (is => 'rw');
-    has 'stash'  => (is => 'rw');        
+    has 'stash'  => (is => 'rw');
 }
 
 my $s = Bread::Board::SetterInjection->new(
@@ -32,7 +30,7 @@ my $s = Bread::Board::SetterInjection->new(
     class => 'Addict',
     dependencies => {
         needle => Bread::Board::SetterInjection->new(name => 'spike', class => 'Needle'),
-        spoon  => Bread::Board::Literal->new(name => 'works', value => 'Spoon!'),        
+        spoon  => Bread::Board::Literal->new(name => 'works', value => 'Spoon!'),
     },
     parameters => {
         stash => { isa => 'Mexican::Black::Tar' }
@@ -54,7 +52,7 @@ does_ok($s, 'Bread::Board::Service');
 
 
     {
-        my $i2 = $s->get(stash => Mexican::Black::Tar->new);    
+        my $i2 = $s->get(stash => Mexican::Black::Tar->new);
         isnt($i, $i2, '... calling it again returns an new object');
     }
 }
@@ -85,18 +83,13 @@ is_deeply($params->{stash}, { isa => 'Mexican::Black::Tar' }, '... got the right
 
 ## some errors
 
-dies_ok {
-    $s->get;
-} '... you must supply the required parameters';
+isnt(exception { $s->get }, undef,
+     '... you must supply the required parameters');
 
-dies_ok {
-    $s->get(stash => []);
-} '... you must supply the required parameters as correct types';
+isnt(exception { $s->get(stash => []) }, undef,
+     '... you must supply the required parameters as correct types');
 
-dies_ok {
-    $s->get(stash => Mexican::Black::Tar->new, foo => 10);
-} '... you must supply the required parameters (and no more)';
+isnt(exception { $s->get(stash => Mexican::Black::Tar->new, foo => 10) }, undef,
+     '... you must supply the required parameters (and no more)');
 
-
-
-
+done_testing;

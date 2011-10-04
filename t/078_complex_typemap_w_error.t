@@ -4,12 +4,10 @@ use strict;
 use warnings;
 
 use Test::More;
-use Test::Exception;
+use Test::Fatal;
 use Test::Moose;
 
-BEGIN {
-    use_ok('Bread::Board');
-}
+use Bread::Board;
 
 {
     package Desk;
@@ -58,12 +56,12 @@ BEGIN {
     );
 }
 
-throws_ok {
+like(exception {
     container 'Initech' => as {
         typemap 'Employee' => infer;
     };
-} qr/Only class types\, role types\, or subtypes of Object can be inferred\. I don\'t know what to do with type \(Any\)/,
-'... cannot infer a non typemapped item below the first level';
+}, qr/Only class types\, role types\, or subtypes of Object can be inferred\. I don\'t know what to do with type \(Any\)/,
+'... cannot infer a non typemapped item below the first level');
 
 
 done_testing;

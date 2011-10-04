@@ -1,8 +1,11 @@
 package Bread::Board::Service::Deferred::Thunk;
+BEGIN {
+  $Bread::Board::Service::Deferred::Thunk::AUTHORITY = 'cpan:STEVAN';
+}
+{
+  $Bread::Board::Service::Deferred::Thunk::VERSION = '0.22';
+}
 use Moose;
-
-our $VERSION   = '0.21';
-our $AUTHORITY = 'cpan:STEVAN';
 
 has 'thunk' => (
     traits   => [ 'Code' ],
@@ -16,13 +19,17 @@ has 'thunk' => (
 
 1;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
 Bread::Board::Service::Deferred::Thunk
+
+=head1 VERSION
+
+version 0.22
 
 =head1 DESCRIPTION
 
@@ -47,4 +54,19 @@ L<http://www.iinteractive.com>
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=head1 AUTHOR
+
+Stevan Little <stevan@iinteractive.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Infinity Interactive.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+

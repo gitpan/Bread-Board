@@ -3,13 +3,10 @@
 use strict;
 use warnings;
 
-use Test::More tests => 25;
+use Test::More;
 use Test::Moose;
-use Test::Exception;
 
-BEGIN {
-    use_ok('Bread::Board');
-}
+use Bread::Board;
 
 =pod
 
@@ -150,5 +147,4 @@ to use cyclical deps.
     is($c->D->E->F, $f, '... our Fs match');
 }
 
-
-
+done_testing;

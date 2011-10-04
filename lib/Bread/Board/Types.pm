@@ -1,13 +1,16 @@
 package Bread::Board::Types;
+BEGIN {
+  $Bread::Board::Types::AUTHORITY = 'cpan:STEVAN';
+}
+{
+  $Bread::Board::Types::VERSION = '0.22';
+}
 use Moose::Util::TypeConstraints;
 
 use Scalar::Util qw(blessed);
 
 use Bread::Board::Service;
 use Bread::Board::Dependency;
-
-our $VERSION   = '0.21';
-our $AUTHORITY = 'cpan:STEVAN';
 
 enum 'Bread::Board::Service::LifeCycles' => qw[
     Null
@@ -99,13 +102,17 @@ coerce 'Bread::Board::Service::Parameters'
 
 no Moose::Util::TypeConstraints; 1;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
 Bread::Board::Types
+
+=head1 VERSION
+
+version 0.22
 
 =head1 DESCRIPTION
 
@@ -128,4 +135,19 @@ L<http://www.iinteractive.com>
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=head1 AUTHOR
+
+Stevan Little <stevan@iinteractive.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Infinity Interactive.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+

@@ -1,8 +1,11 @@
 package Bread::Board::Literal;
+BEGIN {
+  $Bread::Board::Literal::AUTHORITY = 'cpan:STEVAN';
+}
+{
+  $Bread::Board::Literal::VERSION = '0.22';
+}
 use Moose;
-
-our $VERSION   = '0.21';
-our $AUTHORITY = 'cpan:STEVAN';
 
 with 'Bread::Board::Service';
 
@@ -18,13 +21,17 @@ __PACKAGE__->meta->make_immutable;
 
 no Moose; 1;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
 Bread::Board::Literal
+
+=head1 VERSION
+
+version 0.22
 
 =head1 DESCRIPTION
 
@@ -57,4 +64,19 @@ L<http://www.iinteractive.com>
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=head1 AUTHOR
+
+Stevan Little <stevan@iinteractive.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Infinity Interactive.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+
