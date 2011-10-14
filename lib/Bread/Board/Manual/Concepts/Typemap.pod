@@ -11,7 +11,7 @@ Bread::Board::Manual::Concepts::Typemap - An overview of the typemapping feature
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 INTRODUCTION
 
@@ -138,19 +138,6 @@ C<infer> to help Bread::Board figure out specific details.
 As I mentioned above, this feature should be considered experimental
 and we are still working out details and writing tests for it. Any
 contributions are welcome.
-
-=head1 AUTHOR
-
-Stevan Little E<lt>stevan.little@iinteractive.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2010-2011 Infinity Interactive, Inc.
-
-L<http://www.iinteractive.com>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
 
 =head1 AUTHOR
 

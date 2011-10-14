@@ -2,8 +2,8 @@ package Bread::Board::LifeCycle::Singleton::WithParameters;
 BEGIN {
   $Bread::Board::LifeCycle::Singleton::WithParameters::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::LifeCycle::Singleton::WithParameters::VERSION = '0.22';
+BEGIN {
+  $Bread::Board::LifeCycle::Singleton::WithParameters::VERSION = '0.23';
 }
 use Moose::Role;
 
@@ -62,7 +62,7 @@ Bread::Board::LifeCycle::Singleton::WithParameters
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 DESCRIPTION
 
@@ -78,6 +78,8 @@ version 0.22
 
 =item B<flush_instance>
 
+=item B<generate_instance_key>
+
 =back
 
 =head1 BUGS
@@ -85,21 +87,6 @@ version 0.22
 All complex software has bugs lurking in it, and this module is no
 exception. If you find a bug please either email me, or add the bug
 to cpan-RT.
-
-=head1 AUTHOR
-
-Stevan Little E<lt>stevan@iinteractive.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2007-2011 by Infinity Interactive, Inc.
-
-L<http://www.iinteractive.com>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=for Pod::Coverage generate_instance_key
 
 =head1 AUTHOR
 

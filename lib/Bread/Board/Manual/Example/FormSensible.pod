@@ -11,7 +11,7 @@ Bread::Board::Manual::Example::FormSensible - A Form::Sensible and Catalyst exam
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 
@@ -178,19 +178,6 @@ This example could likely be expanded even further to show the use of
 the Form::Sensible rendering as well. Further creative use of parameterized
 containers and a couple utility methods in the Catalyst controllers
 could produce fairly robust and easy to use API for an application.
-
-=head1 AUTHOR
-
-Stevan Little E<lt>stevan.little@iinteractive.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2010-2011 Infinity Interactive, Inc.
-
-L<http://www.iinteractive.com>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
 
 =head1 AUTHOR
 

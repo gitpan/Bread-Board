@@ -11,7 +11,7 @@ Bread::Board::Manual::Example - A set of examples of Bread::Board usage
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 DESCRIPTION
 
@@ -36,19 +36,6 @@ An example of using parameterized containers and dynamic dependencies
 together to build a set of re-usable components within an application.
 
 =back
-
-=head1 AUTHOR
-
-Stevan Little E<lt>stevan.little@iinteractive.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2010-2011 Infinity Interactive, Inc.
-
-L<http://www.iinteractive.com>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
 
 =head1 AUTHOR
 

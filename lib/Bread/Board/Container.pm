@@ -2,8 +2,8 @@ package Bread::Board::Container;
 BEGIN {
   $Bread::Board::Container::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::Container::VERSION = '0.22';
+BEGIN {
+  $Bread::Board::Container::VERSION = '0.23';
 }
 use Moose;
 use Moose::Util::TypeConstraints 'find_type_constraint';
@@ -194,7 +194,7 @@ Bread::Board::Container
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 DESCRIPTION
 
@@ -245,19 +245,6 @@ version 0.22
 All complex software has bugs lurking in it, and this module is no
 exception. If you find a bug please either email me, or add the bug
 to cpan-RT.
-
-=head1 AUTHOR
-
-Stevan Little E<lt>stevan@iinteractive.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2007-2011 by Infinity Interactive, Inc.
-
-L<http://www.iinteractive.com>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
 
 =head1 AUTHOR
 

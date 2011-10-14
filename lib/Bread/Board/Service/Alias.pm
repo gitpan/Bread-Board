@@ -2,8 +2,8 @@ package Bread::Board::Service::Alias;
 BEGIN {
   $Bread::Board::Service::Alias::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::Service::Alias::VERSION = '0.22';
+BEGIN {
+  $Bread::Board::Service::Alias::VERSION = '0.23';
 }
 use Moose;
 
@@ -53,7 +53,21 @@ Bread::Board::Service::Alias
 
 =head1 VERSION
 
-version 0.22
+version 0.23
+
+=head1 DESCRIPTION
+
+No user servicable parts. Read the source if you are interested.
+
+=head1 BUGS
+
+All complex software has bugs lurking in it, and this module is no
+exception. If you find a bug please either email me, or add the bug
+to cpan-RT.
+
+=for Pod::Coverage aliased_from_path
+aliased_from
+_build_aliased_from
 
 =head1 AUTHOR
 
@@ -70,3 +84,4 @@ the same terms as the Perl 5 programming language system itself.
 
 
 __END__
+

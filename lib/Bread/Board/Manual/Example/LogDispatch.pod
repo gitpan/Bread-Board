@@ -11,7 +11,7 @@ Bread::Board::Manual::Example::LogDispatch - An example of composing a dynamic L
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 
@@ -120,19 +120,6 @@ This example illustrates how when a parameterized container is
 instantiated, the parameters become sub-containers of the
 resulting container. This makes it just as easy to fetch
 the 'Outputs' container and use it inside the 'Logger' service.
-
-=head1 AUTHOR
-
-Stevan Little E<lt>stevan.little@iinteractive.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2010-2011 Infinity Interactive, Inc.
-
-L<http://www.iinteractive.com>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
 
 =head1 AUTHOR
 

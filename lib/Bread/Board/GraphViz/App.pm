@@ -2,8 +2,8 @@ package Bread::Board::GraphViz::App;
 BEGIN {
   $Bread::Board::GraphViz::App::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::GraphViz::App::VERSION = '0.22';
+BEGIN {
+  $Bread::Board::GraphViz::App::VERSION = '0.23';
 }
 use Moose;
 # ABSTRACT: display a L<Bread::Board>'s dependency graph
@@ -43,30 +43,21 @@ Bread::Board::GraphViz::App - display a L<Bread::Board>'s dependency graph
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 
 See L<visualize-breadboard.pl>.
+
+=head1 AUTHOR (actual)
+
+Jonathan Rockway - C<< <jrockway@cpan.org> >>
 
 =head1 BUGS
 
 All complex software has bugs lurking in it, and this module is no
 exception. If you find a bug please either email me, or add the bug
 to cpan-RT.
-
-=head1 AUTHOR
-
-Jonathan Rockway - C<< <jrockway@cpan.org> >>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2007-2011 by Infinity Interactive, Inc.
-
-L<http://www.iinteractive.com>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
 
 =head1 AUTHOR
 

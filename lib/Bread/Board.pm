@@ -2,8 +2,8 @@ package Bread::Board;
 BEGIN {
   $Bread::Board::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::VERSION = '0.22';
+BEGIN {
+  $Bread::Board::VERSION = '0.23';
 }
 use strict;
 use warnings;
@@ -197,7 +197,7 @@ Bread::Board - A solderless way to wire up your application components
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 
@@ -356,19 +356,6 @@ Bread::Board is basically my re-write of IOC.
 All complex software has bugs lurking in it, and this module is no
 exception. If you find a bug please either email me, or add the bug
 to cpan-RT.
-
-=head1 AUTHOR
-
-Stevan Little E<lt>stevan@iinteractive.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2007-2011 by Infinity Interactive, Inc.
-
-L<http://www.iinteractive.com>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
 
 =head1 AUTHOR
 

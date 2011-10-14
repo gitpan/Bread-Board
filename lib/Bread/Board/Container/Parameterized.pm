@@ -2,8 +2,8 @@ package Bread::Board::Container::Parameterized;
 BEGIN {
   $Bread::Board::Container::Parameterized::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::Container::Parameterized::VERSION = '0.22';
+BEGIN {
+  $Bread::Board::Container::Parameterized::VERSION = '0.23';
 }
 use Moose;
 # ABSTRACT: A parameterized container
@@ -28,10 +28,7 @@ has 'container' => (
     is      => 'ro',
     isa     => 'Bread::Board::Container',
     lazy    => 1,
-    default => sub {
-        my $self = shift;
-        Bread::Board::Container->new( name => $self->name )
-    },
+    builder => '_build_container',
     handles => [qw[
         add_service
         get_service
@@ -46,6 +43,11 @@ has 'container' => (
         has_sub_containers
     ]]
 );
+
+sub _build_container {
+    my $self = shift;
+    Bread::Board::Container->new( name => $self->name )
+}
 
 sub fetch   { die "Cannot fetch from a parameterized container";   }
 sub resolve { die "Cannot resolve from a parameterized container"; }
@@ -66,7 +68,12 @@ sub create {
                  . (join "" => @allowed_names)
                  . ")";
 
-    my $clone = $self->container->clone( name => join "|" => $self->name, @given_names );
+
+    my $clone = $self->container->clone(
+        name => ($self->container->name eq $self->name
+                    ? join "|" => $self->name, @given_names
+                    : $self->container->name)
+    );
 
     foreach my $key ( @given_names ) {
         $clone->add_sub_container(
@@ -91,7 +98,7 @@ Bread::Board::Container::Parameterized - A parameterized container
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 DESCRIPTION
 
@@ -113,6 +120,12 @@ version 0.22
 
 =item B<create ( %params )>
 
+=item B<fetch>
+=item B<resolve>
+
+These two methods die, they are not appropriate, but are here for
+completeness.
+
 =back
 
 =head1 BUGS
@@ -120,22 +133,6 @@ version 0.22
 All complex software has bugs lurking in it, and this module is no
 exception. If you find a bug please either email me, or add the bug
 to cpan-RT.
-
-=head1 AUTHOR
-
-Stevan Little E<lt>stevan.little@iinteractive.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2010-2011 Infinity Interactive, Inc.
-
-L<http://www.iinteractive.com>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=for Pod::Coverage fetch
-resolve
 
 =head1 AUTHOR
 
