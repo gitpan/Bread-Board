@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::AUTHORITY = 'cpan:STEVAN';
 }
 BEGIN {
-  $Bread::Board::VERSION = '0.23';
+  $Bread::Board::VERSION = '0.24';
 }
 use strict;
 use warnings;
@@ -197,7 +197,7 @@ Bread::Board - A solderless way to wire up your application components
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 SYNOPSIS
 

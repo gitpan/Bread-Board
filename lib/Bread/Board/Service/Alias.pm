@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Service::Alias::AUTHORITY = 'cpan:STEVAN';
 }
 BEGIN {
-  $Bread::Board::Service::Alias::VERSION = '0.23';
+  $Bread::Board::Service::Alias::VERSION = '0.24';
 }
 use Moose;
 
@@ -53,7 +53,7 @@ Bread::Board::Service::Alias
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 DESCRIPTION
 

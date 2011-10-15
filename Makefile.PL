@@ -32,7 +32,7 @@ my %WriteMakefileArgs = (
     'MooseX::Params::Validate' => '0.14',
     'Try::Tiny' => '0'
   },
-  'VERSION' => '0.23',
+  'VERSION' => '0.24',
   'test' => {
     'TESTS' => 't/*.t'
   }

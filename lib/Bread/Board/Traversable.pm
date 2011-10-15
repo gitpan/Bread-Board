@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Traversable::AUTHORITY = 'cpan:STEVAN';
 }
 BEGIN {
-  $Bread::Board::Traversable::VERSION = '0.23';
+  $Bread::Board::Traversable::VERSION = '0.24';
 }
 use Moose::Role;
 
@@ -45,7 +45,8 @@ sub fetch {
         my $c = $root;
         do {
             shift @path;
-            $c = $c->parent;
+            $c = $c->parent
+                 || confess "Expected parent for " . $c->name . " but found none";
         } while (defined $path[0] && $path[0] eq '..' && $c->has_parent);
         $root = $c;
     }
@@ -69,6 +70,9 @@ sub fetch {
 
 sub _get_container_or_service {
     my ($c, $name) = @_;
+
+    (blessed $c)
+        || confess "Expected object, got $c";
 
     if ($c->isa('Bread::Board::Dependency')) {
         # make sure to evaluate this from the parent
@@ -108,7 +112,7 @@ Bread::Board::Traversable
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 SYNOPSIS
 

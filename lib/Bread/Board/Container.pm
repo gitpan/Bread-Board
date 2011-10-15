@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Container::AUTHORITY = 'cpan:STEVAN';
 }
 BEGIN {
-  $Bread::Board::Container::VERSION = '0.23';
+  $Bread::Board::Container::VERSION = '0.24';
 }
 use Moose;
 use Moose::Util::TypeConstraints 'find_type_constraint';
@@ -39,7 +39,7 @@ has 'services' => (
 );
 
 has 'sub_containers' => (
-    traits    => [ 'Hash' ],
+    traits    => [ 'Hash', 'Clone' ],
     is        => 'rw',
     isa       => 'Bread::Board::Container::SubContainerList',
     coerce    => 1,
@@ -194,7 +194,7 @@ Bread::Board::Container
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 DESCRIPTION
 
