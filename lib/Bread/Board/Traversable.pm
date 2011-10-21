@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Traversable::AUTHORITY = 'cpan:STEVAN';
 }
 BEGIN {
-  $Bread::Board::Traversable::VERSION = '0.24';
+  $Bread::Board::Traversable::VERSION = '0.25';
 }
 use Moose::Role;
 
@@ -112,7 +112,7 @@ Bread::Board::Traversable
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 SYNOPSIS
 

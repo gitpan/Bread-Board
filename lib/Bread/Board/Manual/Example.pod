@@ -11,7 +11,7 @@ Bread::Board::Manual::Example - A set of examples of Bread::Board usage
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 DESCRIPTION
 

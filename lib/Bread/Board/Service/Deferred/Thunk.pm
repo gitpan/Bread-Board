@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Service::Deferred::Thunk::AUTHORITY = 'cpan:STEVAN';
 }
 BEGIN {
-  $Bread::Board::Service::Deferred::Thunk::VERSION = '0.24';
+  $Bread::Board::Service::Deferred::Thunk::VERSION = '0.25';
 }
 use Moose;
 
@@ -29,7 +29,7 @@ Bread::Board::Service::Deferred::Thunk
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 DESCRIPTION
 

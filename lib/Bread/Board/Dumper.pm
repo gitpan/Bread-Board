@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Dumper::AUTHORITY = 'cpan:STEVAN';
 }
 BEGIN {
-  $Bread::Board::Dumper::VERSION = '0.24';
+  $Bread::Board::Dumper::VERSION = '0.25';
 }
 use Moose;
 
@@ -57,7 +57,7 @@ Bread::Board::Dumper
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 SYNOPSIS
 

@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::LifeCycle::Singleton::AUTHORITY = 'cpan:STEVAN';
 }
 BEGIN {
-  $Bread::Board::LifeCycle::Singleton::VERSION = '0.24';
+  $Bread::Board::LifeCycle::Singleton::VERSION = '0.25';
 }
 use Moose::Role;
 
@@ -72,7 +72,7 @@ Bread::Board::LifeCycle::Singleton
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 DESCRIPTION
 

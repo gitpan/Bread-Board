@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Service::WithClass::AUTHORITY = 'cpan:STEVAN';
 }
 BEGIN {
-  $Bread::Board::Service::WithClass::VERSION = '0.24';
+  $Bread::Board::Service::WithClass::VERSION = '0.25';
 }
 use Moose::Role;
 
@@ -35,7 +35,7 @@ Bread::Board::Service::WithClass
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 DESCRIPTION
 

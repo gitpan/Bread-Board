@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::GraphViz::AUTHORITY = 'cpan:STEVAN';
 }
 BEGIN {
-  $Bread::Board::GraphViz::VERSION = '0.24';
+  $Bread::Board::GraphViz::VERSION = '0.25';
 }
 use Moose;
 # ABSTRACT: visualize L<Bread::Board> dependency graphs
@@ -134,7 +134,7 @@ Bread::Board::GraphViz - visualize L<Bread::Board> dependency graphs
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 SYNOPSIS
 

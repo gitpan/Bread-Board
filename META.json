@@ -51,7 +51,7 @@
          "web" : "http://github.com/stevan/BreadBoard"
       }
    },
-   "version" : "0.24",
+   "version" : "0.25",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
