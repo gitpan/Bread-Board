@@ -1,8 +1,8 @@
 # PODNAME: Bread::Board::Manual::Concepts::Typemap
 # ABSTRACT: An overview of the typemapping feature
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -11,7 +11,7 @@ Bread::Board::Manual::Concepts::Typemap - An overview of the typemapping feature
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 INTRODUCTION
 
@@ -19,7 +19,7 @@ A new (read: experimental) feature of Bread::Board is typemapped services.
 These are services which are mapped to a particular type rather then just
 a name. This feature has the potential to make obsolete a large amount of the
 Bread::Board configuration by simply asking Bread::Board to figure things
-out on it's own. Here is a small example of how this works.
+out on its own. Here is a small example of how this works.
 
   # define the classes making sure
   # to specify required items and
@@ -145,10 +145,9 @@ Stevan Little <stevan@iinteractive.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Infinity Interactive.
+This software is copyright (c) 2013 by Infinity Interactive.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

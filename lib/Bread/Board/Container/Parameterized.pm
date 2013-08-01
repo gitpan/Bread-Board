@@ -2,10 +2,12 @@ package Bread::Board::Container::Parameterized;
 BEGIN {
   $Bread::Board::Container::Parameterized::AUTHORITY = 'cpan:STEVAN';
 }
-BEGIN {
-  $Bread::Board::Container::Parameterized::VERSION = '0.25';
+{
+  $Bread::Board::Container::Parameterized::VERSION = '0.26';
 }
 use Moose;
+use Moose::Util 'find_meta';
+use Bread::Board::Container::FromParameterized;
 # ABSTRACT: A parameterized container
 
 use Bread::Board::Container;
@@ -75,6 +77,20 @@ sub create {
                     : $self->container->name)
     );
 
+    my $from_parameterized_meta = find_meta('Bread::Board::Container::FromParameterized');
+    $clone = $from_parameterized_meta->rebless_instance($clone);
+
+    if ($self->has_parent) {
+        my $cloned_parent = $self->parent->clone;
+
+        $cloned_parent->sub_containers({
+            %{ $cloned_parent->sub_containers },
+            $self->name => $clone,
+        });
+
+        $clone->parent($cloned_parent);
+    }
+
     foreach my $key ( @given_names ) {
         $clone->add_sub_container(
             $params{ $key }->clone( name => $key )
@@ -86,9 +102,9 @@ sub create {
 
 __PACKAGE__->meta->make_immutable;
 
-no Moose; 1;
+no Moose; no Moose::Util; 1;
 
-
+__END__
 
 =pod
 
@@ -98,7 +114,7 @@ Bread::Board::Container::Parameterized - A parameterized container
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 DESCRIPTION
 
@@ -140,13 +156,9 @@ Stevan Little <stevan@iinteractive.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Infinity Interactive.
+This software is copyright (c) 2013 by Infinity Interactive.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

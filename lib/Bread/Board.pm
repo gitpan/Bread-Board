@@ -2,8 +2,8 @@ package Bread::Board;
 BEGIN {
   $Bread::Board::AUTHORITY = 'cpan:STEVAN';
 }
-BEGIN {
-  $Bread::Board::VERSION = '0.25';
+{
+  $Bread::Board::VERSION = '0.26';
 }
 use strict;
 use warnings;
@@ -23,7 +23,7 @@ use Bread::Board::LifeCycle::Singleton;
 use Bread::Board::Service::Inferred;
 use Bread::Board::Service::Alias;
 
-use Moose::Exporter;
+use Moose::Exporter 1.00;
 Moose::Exporter->setup_import_methods(
     as_is => [qw[
         as
@@ -41,21 +41,29 @@ Moose::Exporter->setup_import_methods(
 sub as (&) { $_[0] }
 
 our $CC;
+our $in_container;
 
 sub set_root_container {
-    (defined $CC && confess "Cannot set the root container, CC is already defined $CC");
+    confess "Can't set the root container when we're already in a container"
+        if $in_container;
     $CC = shift;
 }
 
 sub container ($;$$) {
     my $name        = shift;
-    my $name_is_obj = blessed $name && $name->isa('Bread::Board::Container') ? 1 : 0;
+
+    my $name_is_obj = 0;
+    if (blessed $name){
+        confess 'an object used as a container must inherit from Bread::Board::Container'
+            unless $name->isa('Bread::Board::Container');
+        $name_is_obj = 1;
+    }
 
     my $c;
     if ( scalar @_ == 0 ) {
         if ( $name_is_obj ) {
             # this is basically:
-            # container( A::Bread::Boad::Container->new )
+            # container( A::Bread::Board::Container->new )
             # which should work
             $c = $name;
         }
@@ -112,6 +120,7 @@ sub container ($;$$) {
     if (defined $body) {
         local $_  = $c;
         local $CC = $c;
+        local $in_container = 1;
         $body->($c);
     }
 
@@ -126,7 +135,8 @@ sub include ($) {
     else {
         confess "Couldn't compile $file: $@" if $@;
         confess "Couldn't open $file for reading: $!" if $!;
-        confess "Unknown error when compiling $file";
+        confess "Unknown error when compiling $file "
+              . "(or $file doesn't return a true value)";
     }
 }
 
@@ -144,12 +154,14 @@ sub service ($@) {
             $s = $params{service_class}->new(name => $name, %params);
         }
         else {
-            my $type   = $params{service_type} || (exists $params{block} ? 'Block' : 'Constructor');
+            my $type = $params{service_type};
+            $type = exists $params{block} ? 'Block' : 'Constructor'
+                unless defined $type;
             $s = "Bread::Board::${type}Injection"->new(name => $name, %params);
         }
     }
     else {
-        confess "I don't understand @_";
+        confess "A service is defined by a name and either a single value or hash of parameters; you have supplied neither";
     }
     return $s unless defined $CC;
     $CC->add_service($s);
@@ -173,7 +185,7 @@ sub typemap ($@) {
     my $type = shift;
 
     (scalar @_ == 1)
-        || confess "Too many (or too few) arguments to typemap";
+        || confess "typemap takes a single argument";
 
     my $service;
     if (blessed $_[0]) {
@@ -184,7 +196,7 @@ sub typemap ($@) {
             $service = $_[0]->infer_service( $type );
         }
         else {
-            confess "No idea what to do with a " . $_[0];
+            confess $_[0] . " isn't a service";
         }
     }
     else {
@@ -221,7 +233,7 @@ sub depends_on ($) {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -231,7 +243,7 @@ Bread::Board - A solderless way to wire up your application components
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 SYNOPSIS
 
@@ -331,33 +343,210 @@ Want to know more? See the L<Bread::Board::Manual>.
   | o o | 28 o-o-o-o-o ^ o-o-o-o-o 28 | o o |
   +-----------------------------------------+
 
+Loading this package will automatically load the rest of the packages needed by
+your Bread::Board configuration.
+
 =head1 EXPORTED FUNCTIONS
+
+The functions of this package provide syntactic sugar to help you build your
+Bread::Board configuration. You can build such a configuration by constructing
+the objects manually instead, but your code may be more difficult to
+understand.
 
 =over 4
 
 =item I<container ($name, &body)>
 
+This function constructs and returns an instance of L<Bread::Board::Container>.
+The (optional) C<&body> block may be used to add services or sub-containers
+within the newly constructed container. Usually, the block is not passed
+directly, but passed using the C<as> function.
+
+For example,
+
+  container 'MyWebApp' => as {
+      service my_dispatcher => (
+          class => 'MyWebApp::Dispatcher',
+      );
+  };
+
 =item I<container ($container_instance, &body)>
+
+In many cases, subclassing L<Bread::Board::Container> is the easiest route to
+getting access to this framework. You can do this and still get all the
+benefits of the syntactic sugar for configuring that class by passing an
+instance of your container subclass to C<container>.
+
+You could, for example, configure your container inside the C<BUILD> method of
+your class:
+
+  package MyWebApp;
+  use Moose;
+
+  extends 'Bread::Board::Container';
+
+  sub BUILD {
+      my $self = shift;
+
+      container $self => as {
+          service dbh => ( ... );
+      };
+  }
 
 =item I<container ($name, [ @parameters ], &body)>
 
+A third way of using the C<container> function is to build a parameterized
+container. These are useful as a way of providing a placeholder for parts of
+the configuration that may be provided later. You may not use an instance
+object in place of the C<$name> in this case.
+
+For more detail on how you might use parameterized containers, see
+L<Bread::Board::Manual::Concepts::Advanced/Parameterized Containers>.
+
 =item I<as (&body)>
+
+This is just a replacement for the C<sub> keyword that is easier to read when
+defining containers.
 
 =item I<service ($name, $literal | %service_description)>
 
+Within the C<as> blocks for your containers, you may construct services using
+the C<service> function. This can construct several different kinds of services
+based upon how it is called.
+
+To build a literal service (a L<Bread::Board::Literal> object), just specify a
+scalar value or reference you want to use as the literal value:
+
+  # In case you need to adjust the gravitational constant of the Universe
+  service gravitational_constant => 6.673E-11;
+
+To build a service using one of the injection services, just fill in all the
+details required to use that sort of injection:
+
+  service search_service => (
+      class => 'MyApp::Search',
+      block => sub {
+          my $s = shift;
+          MyApp::Search->new($s->param('url'), $s->param('type'));
+      },
+      dependencies => {
+          url => 'search_url',
+      },
+      parameters => {
+          type => { isa => 'Str', default => 'text' },
+      },
+  );
+
+The type of injection performed depends on the parameters used. You may use
+the C<service_class> parameter to pick a specific injector class. For
+instance, this is useful if you need to use L<Bread::Board::SetterInjection>
+or have defined a custom injection service.  If you specify a C<block>, block
+injection will be performed using L<Bread::Board::BlockInjection>. If neither
+of these is present, constructor injection will be used with
+L<Bread::Board::ConstructorInjection> (and you must provide the C<class>
+option).
+
 =item I<depends_on ($service_path)>
+
+The C<depends_on> function creates a L<Bread::Board::Dependency> object for the
+named C<$service_path> and returns it.
 
 =item I<wire_names (@service_names)>
 
+This function is just a shortcut for passing a hash reference of dependencies
+into the service.
+
+  service foo => (
+      class => "Pity::TheFoo',
+      dependencies => wire_names(qw( foo bar baz )),
+  );
+
+The above is identical to:
+
+  service foo => (
+      class => 'Pity::TheFoo',
+      dependencies => {
+          foo => depends_on('foo'),
+          bar => depends_on('bar'),
+          baz => depends_on('baz'),
+      },
+  );
+
 =item I<typemap ($type, $service | $service_path)>
+
+This creates a type mapping for the named type. Typically, it is paired with
+the C<infer> call like so:
+
+  typemap 'MyApp::Model::UserAccount' => infer;
+
+For more details on what type mapping is and how it works, see
+L<Bread::Board::Manual::Concepts::Typemap>.
 
 =item I<infer (?%hints)>
 
+This is used with C<typemap> to help create the typemap inference. It can be
+used with no arguments to do everything automatically. However, in some cases,
+you may want to pass a service instance as the argument or a hash of service
+arguments to change how the type map works. For example, if your type needs to
+be constructed using a setter injection, you can use an inference similar to
+this:
+
+  typemap 'MyApp::Model::UserPassword' => infer(
+      service_class => 'Bread::Board::SetterInjection',
+  );
+
+For more details on what type mapping is and how it works, see
+L<Bread::Board::Manual::Concepts::Typemap>.
+
 =item I<include ($file)>
+
+This is a shortcut for loading a Bread::Board configuration from another file.
+
+  include "filename.pl";
+
+The above is pretty much identical to running:
+
+  do "filename.pl";
+
+However, you might find it more readable to use C<include>.
 
 =item I<alias ($service_name, $service_path, %service_description)>
 
+This helper allows for the creation of service aliases, which allows you to
+define a service in one place and then reuse that service with a different name
+somewhere else. This is sort of like a symbolic link for services. Aliases will
+be resolved recursively, so an alias can alias an alias.
+
+For example,
+
+  service file_logger => (
+      class => 'MyApp::Logger::File',
+  );
+
+  alias my_logger => 'file_logger';
+
+=back
+
+=head1 OTHER FUNCTIONS
+
+These are not exported, but might be helpful to you.
+
+=over 4
+
 =item I<set_root_container ($container)>
+
+You may use this to set a top-level root container for all container
+definitions.
+
+For example,
+
+  my $app = container MyApp => as { ... };
+
+  Bread::Board::set_root_container($app);
+
+  my $config = container Config => as { ... };
+
+Here the C<$config> container would be created as a sub-container of C<$app>.
 
 =back
 
@@ -373,9 +562,18 @@ it.
 Matt "mst" Trout, for finally coming up with the best name
 for this module.
 
+=head1 ARTICLES
+
+L<Bread::Board is the right tool for this job|http://domm.plix.at/perl/2013_04_bread_board_is_the_right_rool_for_this_job.html>
+Thomas Klausner showing a use-case for Bread::Board.
+
 =head1 SEE ALSO
 
 =over 4
+
+=item L<Bread::Board::Declare>
+
+This provides more powerful syntax for writing Bread::Board container classes.
 
 =item L<IOC>
 
@@ -389,7 +587,7 @@ Bread::Board is basically my re-write of IOC.
 
 All complex software has bugs lurking in it, and this module is no
 exception. If you find a bug please either email me, or add the bug
-to cpan-RT.
+to Github Issues.
 
 =head1 AUTHOR
 
@@ -397,13 +595,9 @@ Stevan Little <stevan@iinteractive.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Infinity Interactive.
+This software is copyright (c) 2013 by Infinity Interactive.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

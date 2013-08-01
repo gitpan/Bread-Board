@@ -2,8 +2,8 @@ package Bread::Board::Types;
 BEGIN {
   $Bread::Board::Types::AUTHORITY = 'cpan:STEVAN';
 }
-BEGIN {
-  $Bread::Board::Types::VERSION = '0.25';
+{
+  $Bread::Board::Types::VERSION = '0.26';
 }
 use Moose::Util::TypeConstraints;
 
@@ -19,8 +19,11 @@ enum 'Bread::Board::Service::LifeCycles' => qw[
 
 ## for Bread::Board::Container
 
+class_type 'Bread::Board::Container';
+class_type 'Bread::Board::Container::Parameterized';
+
 subtype 'Bread::Board::Container::SubContainerList'
-    => as 'HashRef[Bread::Board::Container]';
+    => as 'HashRef[Bread::Board::Container|Bread::Board::Container::Parameterized]';
 
 coerce 'Bread::Board::Container::SubContainerList'
     => from 'ArrayRef[Bread::Board::Container]'
@@ -102,7 +105,7 @@ coerce 'Bread::Board::Service::Parameters'
 
 no Moose::Util::TypeConstraints; 1;
 
-
+__END__
 
 =pod
 
@@ -112,7 +115,7 @@ Bread::Board::Types
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 DESCRIPTION
 
@@ -128,13 +131,9 @@ Stevan Little <stevan@iinteractive.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Infinity Interactive.
+This software is copyright (c) 2013 by Infinity Interactive.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

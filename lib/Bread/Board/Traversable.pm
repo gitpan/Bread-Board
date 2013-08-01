@@ -2,12 +2,12 @@ package Bread::Board::Traversable;
 BEGIN {
   $Bread::Board::Traversable::AUTHORITY = 'cpan:STEVAN';
 }
-BEGIN {
-  $Bread::Board::Traversable::VERSION = '0.25';
+{
+  $Bread::Board::Traversable::VERSION = '0.26';
 }
 use Moose::Role;
 
-with 'MooseX::Clone';
+with 'MooseX::Clone' => { -version => 0.05 };
 
 has 'parent' => (
     is        => 'rw',
@@ -89,10 +89,18 @@ sub _get_container_or_service {
     # there must be a better way to do this
 
     if ($c->does('Bread::Board::Service')) {
-        return $c                           if $c->name eq $name;
+        if ($c->name eq $name) {
+            warn "Traversing into the current service ($name) is deprecated."
+               . " You should remove the $name component from the path.";
+            return $c;
+        }
     }
     elsif ($c->isa('Bread::Board::Container')) {
-        return $c                           if $c->name eq $name;
+        if ($c->name eq $name) {
+            warn "Traversing into the current container ($name) is deprecated;"
+               . " you should remove the $name component from the path";
+            return $c;
+        }
         return $c->get_sub_container($name) if $c->has_sub_container($name);
         return $c->get_service($name)       if $c->has_service($name);
     }
@@ -102,7 +110,7 @@ sub _get_container_or_service {
 
 no Moose::Role; 1;
 
-
+__END__
 
 =pod
 
@@ -112,7 +120,7 @@ Bread::Board::Traversable
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 SYNOPSIS
 
@@ -146,13 +154,9 @@ Stevan Little <stevan@iinteractive.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Infinity Interactive.
+This software is copyright (c) 2013 by Infinity Interactive.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

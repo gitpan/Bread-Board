@@ -1,8 +1,8 @@
 # PODNAME: Bread::Board::Manual::Concepts::Advanced
 # ABSTRACT: An overview of some of the more advanced Bread::Board concepts
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -11,7 +11,7 @@ Bread::Board::Manual::Concepts::Advanced - An overview of some of the more advan
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 INTRODUCTION
 
@@ -37,7 +37,7 @@ next few releases, for now I need to get this one out the door.
 =head2 Subclassing
 
 Bread::Board was built from the very start to be an open system and
-to allow for the subclassing of all it's internal components.
+to allow for the subclassing of all its internal components.
 
 Here is a simple example of extending L<Bread::Board::Container> to
 build a container specific to your application.
@@ -208,10 +208,9 @@ Stevan Little <stevan@iinteractive.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Infinity Interactive.
+This software is copyright (c) 2013 by Infinity Interactive.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
