@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Container::Parameterized::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::Container::Parameterized::VERSION = '0.26';
+  $Bread::Board::Container::Parameterized::VERSION = '0.27';
 }
 use Moose;
 use Moose::Util 'find_meta';
@@ -114,7 +114,7 @@ Bread::Board::Container::Parameterized - A parameterized container
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 DESCRIPTION
 

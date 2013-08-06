@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Types::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::Types::VERSION = '0.26';
+  $Bread::Board::Types::VERSION = '0.27';
 }
 use Moose::Util::TypeConstraints;
 
@@ -115,7 +115,7 @@ Bread::Board::Types
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 DESCRIPTION
 

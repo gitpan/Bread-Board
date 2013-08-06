@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Container::FromParameterized::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::Container::FromParameterized::VERSION = '0.26';
+  $Bread::Board::Container::FromParameterized::VERSION = '0.27';
 }
 use Moose;
 
@@ -27,7 +27,7 @@ Bread::Board::Container::FromParameterized
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 AUTHOR
 

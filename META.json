@@ -67,7 +67,7 @@
          "web" : "https://github.com/stevan/BreadBoard"
       }
    },
-   "version" : "0.26",
+   "version" : "0.27",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.018000"
@@ -306,6 +306,7 @@
       "Jesse Luehrs <doy@tozt.net>",
       "Jonathan Rockway <jon@jrock.us>",
       "Kip Hampton <khampton@totalcinema.com>",
+      "Neil Bowers <neil@bowers.com>",
       "Philippe Bruhat (BooK) <book@cpan.org>",
       "Sterling Hanenkamp <hanenkamp@cpan.org>",
       "Tomas Doran <bobtfish@bobtfish.net>",

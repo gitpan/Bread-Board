@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Service::WithParameters::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::Service::WithParameters::VERSION = '0.26';
+  $Bread::Board::Service::WithParameters::VERSION = '0.27';
 }
 use Moose::Role;
 use MooseX::Params::Validate qw(validated_hash);
@@ -86,7 +86,7 @@ Bread::Board::Service::WithParameters
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 DESCRIPTION
 

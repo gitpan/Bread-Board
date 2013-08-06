@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Service::Inferred::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::Service::Inferred::VERSION = '0.26';
+  $Bread::Board::Service::Inferred::VERSION = '0.27';
 }
 use Moose;
 use Moose::Util::TypeConstraints 'find_type_constraint';
@@ -225,7 +225,7 @@ Bread::Board::Service::Inferred
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 DESCRIPTION
 

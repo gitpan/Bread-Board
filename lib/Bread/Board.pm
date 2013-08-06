@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::VERSION = '0.26';
+  $Bread::Board::VERSION = '0.27';
 }
 use strict;
 use warnings;
@@ -54,8 +54,8 @@ sub container ($;$$) {
 
     my $name_is_obj = 0;
     if (blessed $name){
-        confess 'an object used as a container must inherit from Bread::Board::Container'
-            unless $name->isa('Bread::Board::Container');
+        confess 'an object used as a container must inherit from Bread::Board::Container or Bread::Board::Container::Parameterized'
+            unless $name->isa('Bread::Board::Container') || $name->isa('Bread::Board::Container::Parameterized');
         $name_is_obj = 1;
     }
 
@@ -243,7 +243,7 @@ Bread::Board - A solderless way to wire up your application components
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 SYNOPSIS
 
