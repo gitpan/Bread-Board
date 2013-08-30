@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Dependency::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::Dependency::VERSION = '0.27';
+  $Bread::Board::Dependency::VERSION = '0.28';
 }
 use Moose;
 
@@ -62,7 +62,7 @@ Bread::Board::Dependency
 
 =head1 VERSION
 
-version 0.27
+version 0.28
 
 =head1 DESCRIPTION
 

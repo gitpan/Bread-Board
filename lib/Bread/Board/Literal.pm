@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Literal::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::Literal::VERSION = '0.27';
+  $Bread::Board::Literal::VERSION = '0.28';
 }
 use Moose;
 
@@ -16,6 +16,10 @@ has 'value' => (
 );
 
 sub get { (shift)->value }
+
+sub clone_and_inherit_params {
+    confess 'Trying to inherit from a literal service';
+}
 
 __PACKAGE__->meta->make_immutable;
 
@@ -31,7 +35,7 @@ Bread::Board::Literal
 
 =head1 VERSION
 
-version 0.27
+version 0.28
 
 =head1 DESCRIPTION
 
@@ -42,6 +46,8 @@ version 0.27
 =item B<get>
 
 =item B<value>
+
+=item B<clone_and_inherit_params>
 
 =back
 

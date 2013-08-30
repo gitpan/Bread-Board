@@ -91,6 +91,8 @@ t/102_clone_w_block_injection.t
 t/110_clone_w_singleton.t
 t/150_deferred_parameters_fail.t
 t/151_sugar_no_container.t
+t/152_sugar_service_inheritance.t
+t/153_sugar_container_inheritance.t
 t/200_example_code.t
 t/201_log_dispatch_example.t
 t/202_form_sensible_example.t

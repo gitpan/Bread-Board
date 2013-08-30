@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::ConstructorInjection::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::ConstructorInjection::VERSION = '0.27';
+  $Bread::Board::ConstructorInjection::VERSION = '0.28';
 }
 use Moose;
 
@@ -51,7 +51,7 @@ Bread::Board::ConstructorInjection
 
 =head1 VERSION
 
-version 0.27
+version 0.28
 
 =head1 DESCRIPTION
 
