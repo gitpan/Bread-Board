@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Types::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::Types::VERSION = '0.28';
+  $Bread::Board::Types::VERSION = '0.29';
 }
 use Moose::Util::TypeConstraints;
 
@@ -11,11 +11,6 @@ use Scalar::Util qw(blessed);
 
 use Bread::Board::Service;
 use Bread::Board::Dependency;
-
-enum 'Bread::Board::Service::LifeCycles' => qw[
-    Null
-    Singleton
-];
 
 ## for Bread::Board::Container
 
@@ -115,7 +110,7 @@ Bread::Board::Types
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 DESCRIPTION
 

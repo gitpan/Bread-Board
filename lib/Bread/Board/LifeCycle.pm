@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::LifeCycle::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::LifeCycle::VERSION = '0.28';
+  $Bread::Board::LifeCycle::VERSION = '0.29';
 }
 use Moose::Role;
 
@@ -19,7 +19,7 @@ Bread::Board::LifeCycle
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 DESCRIPTION
 

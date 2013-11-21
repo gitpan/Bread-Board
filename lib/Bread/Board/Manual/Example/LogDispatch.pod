@@ -11,7 +11,7 @@ Bread::Board::Manual::Example::LogDispatch - An example of composing a dynamic L
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 SYNOPSIS
 

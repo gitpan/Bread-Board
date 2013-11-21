@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Literal::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::Literal::VERSION = '0.28';
+  $Bread::Board::Literal::VERSION = '0.29';
 }
 use Moose;
 
@@ -35,7 +35,7 @@ Bread::Board::Literal
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 DESCRIPTION
 

@@ -3,9 +3,10 @@ abstract: 'A solderless way to wire up your application components'
 author:
   - 'Stevan Little <stevan@iinteractive.com>'
 build_requires:
-  File::Find: 0
-  File::Temp: 0
+  File::Spec: 0
   FindBin: 0
+  IO::Handle: 0
+  IPC::Open3: 0
   Test::Fatal: 0
   Test::Moose: 0
   Test::More: 0.88
@@ -13,12 +14,82 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.132140'
+generated_by: 'Dist::Zilla version 5.006, CPAN::Meta::Converter version 2.132830'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Bread-Board
+provides:
+  Bread::Board:
+    file: lib/Bread/Board.pm
+    version: 0.29
+  Bread::Board::BlockInjection:
+    file: lib/Bread/Board/BlockInjection.pm
+    version: 0.29
+  Bread::Board::ConstructorInjection:
+    file: lib/Bread/Board/ConstructorInjection.pm
+    version: 0.29
+  Bread::Board::Container:
+    file: lib/Bread/Board/Container.pm
+    version: 0.29
+  Bread::Board::Container::FromParameterized:
+    file: lib/Bread/Board/Container/FromParameterized.pm
+    version: 0.29
+  Bread::Board::Container::Parameterized:
+    file: lib/Bread/Board/Container/Parameterized.pm
+    version: 0.29
+  Bread::Board::Dependency:
+    file: lib/Bread/Board/Dependency.pm
+    version: 0.29
+  Bread::Board::Dumper:
+    file: lib/Bread/Board/Dumper.pm
+    version: 0.29
+  Bread::Board::LifeCycle:
+    file: lib/Bread/Board/LifeCycle.pm
+    version: 0.29
+  Bread::Board::LifeCycle::Singleton:
+    file: lib/Bread/Board/LifeCycle/Singleton.pm
+    version: 0.29
+  Bread::Board::LifeCycle::Singleton::WithParameters:
+    file: lib/Bread/Board/LifeCycle/Singleton/WithParameters.pm
+    version: 0.29
+  Bread::Board::Literal:
+    file: lib/Bread/Board/Literal.pm
+    version: 0.29
+  Bread::Board::Service:
+    file: lib/Bread/Board/Service.pm
+    version: 0.29
+  Bread::Board::Service::Alias:
+    file: lib/Bread/Board/Service/Alias.pm
+    version: 0.29
+  Bread::Board::Service::Deferred:
+    file: lib/Bread/Board/Service/Deferred.pm
+    version: 0.29
+  Bread::Board::Service::Deferred::Thunk:
+    file: lib/Bread/Board/Service/Deferred/Thunk.pm
+    version: 0.29
+  Bread::Board::Service::Inferred:
+    file: lib/Bread/Board/Service/Inferred.pm
+    version: 0.29
+  Bread::Board::Service::WithClass:
+    file: lib/Bread/Board/Service/WithClass.pm
+    version: 0.29
+  Bread::Board::Service::WithDependencies:
+    file: lib/Bread/Board/Service/WithDependencies.pm
+    version: 0.29
+  Bread::Board::Service::WithParameters:
+    file: lib/Bread/Board/Service/WithParameters.pm
+    version: 0.29
+  Bread::Board::SetterInjection:
+    file: lib/Bread/Board/SetterInjection.pm
+    version: 0.29
+  Bread::Board::Traversable:
+    file: lib/Bread/Board/Traversable.pm
+    version: 0.29
+  Bread::Board::Types:
+    file: lib/Bread/Board/Types.pm
+    version: 0.29
 requires:
   Carp: 0
   Moose: 0
@@ -37,7 +108,7 @@ resources:
   bugtracker: https://github.com/stevan/BreadBoard/issues
   homepage: http://metacpan.org/release/Bread-Board
   repository: git://github.com/stevan/BreadBoard.git
-version: 0.28
+version: 0.29
 x_Dist_Zilla:
   perl:
     version: 5.018001
@@ -49,71 +120,71 @@ x_Dist_Zilla:
           phase: test
           type: requires
       name: '@DOY/TestMoreDoneTesting'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::GatherDir
       name: '@DOY/GatherDir'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::PruneCruft
       name: '@DOY/PruneCruft'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::ManifestSkip
       name: '@DOY/ManifestSkip'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::MetaYAML
       name: '@DOY/MetaYAML'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::License
       name: '@DOY/License'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::Readme
       name: '@DOY/Readme'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::RunExtraTests
       name: '@DOY/RunExtraTests'
-      version: 0.011
+      version: 0.013
     -
       class: Dist::Zilla::Plugin::ExecDir
       name: '@DOY/ExecDir'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::ShareDir
       name: '@DOY/ShareDir'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::MakeMaker
       name: '@DOY/MakeMaker'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::Manifest
       name: '@DOY/Manifest'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@DOY/TestRelease'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::ConfirmRelease
       name: '@DOY/ConfirmRelease'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@DOY/MetaConfig'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::MetaJSON
       name: '@DOY/MetaJSON'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::NextRelease
       name: '@DOY/NextRelease'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::CheckChangesHasContent
       name: '@DOY/CheckChangesHasContent'
@@ -121,7 +192,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::PkgVersion
       name: '@DOY/PkgVersion'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::Authority
       name: '@DOY/Authority'
@@ -129,23 +200,36 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::PodCoverageTests
       name: '@DOY/PodCoverageTests'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@DOY/PodSyntaxTests'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::NoTabsTests
+      config:
+        Dist::Zilla::Plugin::Test::NoTabs:
+          module_finder:
+            - ':InstallModules'
+          script_finder:
+            - ':ExecFiles'
       name: '@DOY/NoTabsTests'
-      version: 0.01
+      version: 0.05
     -
       class: Dist::Zilla::Plugin::EOLTests
       name: '@DOY/EOLTests'
       version: 0.02
     -
       class: Dist::Zilla::Plugin::Test::Compile
+      config:
+        Dist::Zilla::Plugin::Test::Compile:
+          filename: t/00-compile.t
+          module_finder:
+            - ':InstallModules'
+          script_finder:
+            - ':ExecFiles'
       name: '@DOY/Test::Compile'
-      version: 2.002
+      version: 2.037
     -
       class: Dist::Zilla::Plugin::Metadata
       name: '@DOY/Metadata'
@@ -153,23 +237,41 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MetaResources
       name: '@DOY/MetaResources'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::Git::Check
       name: '@DOY/Git::Check'
-      version: 2.013
+      version: 2.016
     -
       class: Dist::Zilla::Plugin::Git::Commit
       name: '@DOY/Git::Commit'
-      version: 2.013
+      version: 2.016
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@DOY/Git::Tag'
-      version: 2.013
+      version: 2.016
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: '@DOY/Git::NextVersion'
-      version: 2.013
+      version: 2.016
+    -
+      class: Dist::Zilla::Plugin::ContributorsFromGit
+      name: '@DOY/ContributorsFromGit'
+      version: 0.006
+    -
+      class: Dist::Zilla::Plugin::FinderCode
+      name: '@DOY/MetaProvides::Package/AUTOVIV/:InstallModulesPM'
+      version: 5.006
+    -
+      class: Dist::Zilla::Plugin::MetaProvides::Package
+      config:
+        Dist::Zilla::Plugin::MetaProvides::Package: {}
+        Dist::Zilla::Role::MetaProvider::Provider:
+          inherit_missing: 1
+          inherit_version: 1
+          meta_noindex: 1
+      name: '@DOY/MetaProvides::Package'
+      version: 1.15000000
     -
       class: Dist::Zilla::Plugin::PodWeaver
       name: '@DOY/PodWeaver'
@@ -177,47 +279,55 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@DOY/UploadToCPAN'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: AutoPrereqs
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::ContributorsFromGit
       name: ContributorsFromGit
       version: 0.006
     -
+      class: Dist::Zilla::Plugin::Prereqs
+      config:
+        Dist::Zilla::Plugin::Prereqs:
+          phase: develop
+          type: requires
+      name: DevelopRequires
+      version: 5.006
+    -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':IncModules'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':TestFiles'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ExecFiles'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ShareFiles'
-      version: 4.300035
+      version: 5.006
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':MainModule'
-      version: 4.300035
+      version: 5.006
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
       is_trial: 0
-    version: 4.300035
+    version: 5.006
 x_authority: cpan:STEVAN
 x_contributors:
-  - 'André Walker <andre@andrewalker.net>'
+  - 'AndrÃ© Walker <andre@andrewalker.net>'
   - 'Brad Bowman <github@bereft.net>'
   - 'Daisuke Maki <dmaki@cpan.org>'
   - 'Florian Ragwitz <rafl@debian.org>'

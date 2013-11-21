@@ -101,7 +101,6 @@ t/301_sugar.t
 t/302_path_traversal_deprecation.t
 t/lib/bad.bb
 t/lib/false.bb
-t/lib/graphable.bb
 t/lib/logger.bb
 t/lib/my_app.bb
 xt/release/eol.t
