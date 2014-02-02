@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::BlockInjection::AUTHORITY = 'cpan:STEVAN';
 }
 {
-  $Bread::Board::BlockInjection::VERSION = '0.29';
+  $Bread::Board::BlockInjection::VERSION = '0.30';
 }
 use Moose;
 
@@ -37,7 +37,7 @@ Bread::Board::BlockInjection
 
 =head1 VERSION
 
-version 0.29
+version 0.30
 
 =head1 DESCRIPTION
 
@@ -69,7 +69,7 @@ Stevan Little <stevan@iinteractive.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Infinity Interactive.
+This software is copyright (c) 2014 by Infinity Interactive.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
