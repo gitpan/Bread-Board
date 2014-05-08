@@ -2,9 +2,7 @@ package Bread::Board::Service::WithDependencies;
 BEGIN {
   $Bread::Board::Service::WithDependencies::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::Service::WithDependencies::VERSION = '0.30';
-}
+$Bread::Board::Service::WithDependencies::VERSION = '0.31';
 use Moose::Role;
 
 use Try::Tiny;
@@ -110,13 +108,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::Service::WithDependencies
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 

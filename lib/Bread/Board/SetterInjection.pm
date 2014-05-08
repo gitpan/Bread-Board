@@ -2,9 +2,7 @@ package Bread::Board::SetterInjection;
 BEGIN {
   $Bread::Board::SetterInjection::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::SetterInjection::VERSION = '0.30';
-}
+$Bread::Board::SetterInjection::VERSION = '0.31';
 use Moose;
 
 use Bread::Board::Types;
@@ -30,13 +28,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::SetterInjection
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 

@@ -2,9 +2,7 @@ package Bread::Board::Service::Inferred;
 BEGIN {
   $Bread::Board::Service::Inferred::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::Service::Inferred::VERSION = '0.30';
-}
+$Bread::Board::Service::Inferred::VERSION = '0.31';
 use Moose;
 use Moose::Util::TypeConstraints 'find_type_constraint';
 
@@ -219,13 +217,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::Service::Inferred
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 

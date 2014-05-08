@@ -5,13 +5,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::Manual::Concepts::Typemap - An overview of the typemapping feature
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 INTRODUCTION
 

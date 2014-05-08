@@ -2,9 +2,7 @@ package Bread::Board::Container;
 BEGIN {
   $Bread::Board::Container::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::Container::VERSION = '0.30';
-}
+$Bread::Board::Container::VERSION = '0.31';
 use Moose;
 use Moose::Util::TypeConstraints 'find_type_constraint';
 use MooseX::Params::Validate 0.14;
@@ -191,13 +189,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::Container
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 

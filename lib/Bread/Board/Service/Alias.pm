@@ -2,9 +2,7 @@ package Bread::Board::Service::Alias;
 BEGIN {
   $Bread::Board::Service::Alias::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::Service::Alias::VERSION = '0.30';
-}
+$Bread::Board::Service::Alias::VERSION = '0.31';
 use Moose;
 
 use Try::Tiny;
@@ -47,13 +45,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::Service::Alias
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 

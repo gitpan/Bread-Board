@@ -2,9 +2,7 @@ package Bread::Board::Service::WithClass;
 BEGIN {
   $Bread::Board::Service::WithClass::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::Service::WithClass::VERSION = '0.30';
-}
+$Bread::Board::Service::WithClass::VERSION = '0.31';
 use Moose::Role;
 use Module::Runtime ();
 
@@ -30,13 +28,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::Service::WithClass
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 

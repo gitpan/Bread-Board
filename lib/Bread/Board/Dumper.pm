@@ -2,9 +2,7 @@ package Bread::Board::Dumper;
 BEGIN {
   $Bread::Board::Dumper::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::Dumper::VERSION = '0.30';
-}
+$Bread::Board::Dumper::VERSION = '0.31';
 use Moose;
 
 sub dump {
@@ -51,13 +49,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::Dumper
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 

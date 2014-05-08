@@ -2,9 +2,7 @@ package Bread::Board::LifeCycle::Singleton::WithParameters;
 BEGIN {
   $Bread::Board::LifeCycle::Singleton::WithParameters::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::LifeCycle::Singleton::WithParameters::VERSION = '0.30';
-}
+$Bread::Board::LifeCycle::Singleton::WithParameters::VERSION = '0.31';
 use Moose::Role;
 
 with 'Bread::Board::LifeCycle';
@@ -56,13 +54,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::LifeCycle::Singleton::WithParameters
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 

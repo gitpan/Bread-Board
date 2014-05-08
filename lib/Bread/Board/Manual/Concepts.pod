@@ -5,13 +5,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::Manual::Concepts - An overview of the concepts in Bread::Board
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 INTRODUCTION
 
@@ -279,10 +281,10 @@ Bread::Board also supports Setter Injection. The idea behind
 setter injection is that for each component dependency a
 corresponding setter method must exist. This style has been
 popularized by the Spring java framework. I will be honest,
-I don't find this type of injection as useful as block of
+I don't find this type of injection as useful as block or
 constructor, but it can come in handy if your object prefers
 you to call setters to initialize it. Here is a fairly contrived
- example using the L<JSON> module.
+example using the L<JSON> module.
 
   $c->add_service(
       Bread::Board::SetterInjection->new(

@@ -2,9 +2,7 @@ package Bread::Board::Service::WithParameters;
 BEGIN {
   $Bread::Board::Service::WithParameters::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::Service::WithParameters::VERSION = '0.30';
-}
+$Bread::Board::Service::WithParameters::VERSION = '0.31';
 use Moose::Role;
 use MooseX::Params::Validate qw(validated_hash);
 
@@ -80,13 +78,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::Service::WithParameters
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 

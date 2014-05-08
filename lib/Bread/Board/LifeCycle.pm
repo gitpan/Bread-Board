@@ -2,9 +2,7 @@ package Bread::Board::LifeCycle;
 BEGIN {
   $Bread::Board::LifeCycle::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::LifeCycle::VERSION = '0.30';
-}
+$Bread::Board::LifeCycle::VERSION = '0.31';
 use Moose::Role;
 
 no Moose::Role; 1;
@@ -13,13 +11,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::LifeCycle
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 

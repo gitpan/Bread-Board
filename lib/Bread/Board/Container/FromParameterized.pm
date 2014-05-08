@@ -2,9 +2,7 @@ package Bread::Board::Container::FromParameterized;
 BEGIN {
   $Bread::Board::Container::FromParameterized::AUTHORITY = 'cpan:STEVAN';
 }
-{
-  $Bread::Board::Container::FromParameterized::VERSION = '0.30';
-}
+$Bread::Board::Container::FromParameterized::VERSION = '0.31';
 use Moose;
 
 extends 'Bread::Board::Container';
@@ -21,13 +19,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bread::Board::Container::FromParameterized
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 AUTHOR
 
