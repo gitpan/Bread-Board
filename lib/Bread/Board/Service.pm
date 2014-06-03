@@ -2,7 +2,7 @@ package Bread::Board::Service;
 BEGIN {
   $Bread::Board::Service::AUTHORITY = 'cpan:STEVAN';
 }
-$Bread::Board::Service::VERSION = '0.31';
+$Bread::Board::Service::VERSION = '0.32';
 use Moose::Role;
 use Module::Runtime ();
 
@@ -129,7 +129,7 @@ Bread::Board::Service
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 DESCRIPTION
 

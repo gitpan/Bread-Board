@@ -2,7 +2,7 @@ package Bread::Board::Literal;
 BEGIN {
   $Bread::Board::Literal::AUTHORITY = 'cpan:STEVAN';
 }
-$Bread::Board::Literal::VERSION = '0.31';
+$Bread::Board::Literal::VERSION = '0.32';
 use Moose;
 
 with 'Bread::Board::Service';
@@ -35,7 +35,7 @@ Bread::Board::Literal
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 DESCRIPTION
 

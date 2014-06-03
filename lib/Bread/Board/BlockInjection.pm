@@ -2,7 +2,7 @@ package Bread::Board::BlockInjection;
 BEGIN {
   $Bread::Board::BlockInjection::AUTHORITY = 'cpan:STEVAN';
 }
-$Bread::Board::BlockInjection::VERSION = '0.31';
+$Bread::Board::BlockInjection::VERSION = '0.32';
 use Moose;
 
 with 'Bread::Board::Service::WithParameters',
@@ -37,7 +37,7 @@ Bread::Board::BlockInjection
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 DESCRIPTION
 

@@ -2,7 +2,7 @@ package Bread::Board::Service::Deferred;
 BEGIN {
   $Bread::Board::Service::Deferred::AUTHORITY = 'cpan:STEVAN';
 }
-$Bread::Board::Service::Deferred::VERSION = '0.31';
+$Bread::Board::Service::Deferred::VERSION = '0.32';
 use Moose ();
 
 use overload
@@ -96,7 +96,7 @@ Bread::Board::Service::Deferred
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 DESCRIPTION
 

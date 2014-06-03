@@ -2,7 +2,7 @@ package Bread::Board::Service::Deferred::Thunk;
 BEGIN {
   $Bread::Board::Service::Deferred::Thunk::AUTHORITY = 'cpan:STEVAN';
 }
-$Bread::Board::Service::Deferred::Thunk::VERSION = '0.31';
+$Bread::Board::Service::Deferred::Thunk::VERSION = '0.32';
 use Moose;
 
 has 'thunk' => (
@@ -29,7 +29,7 @@ Bread::Board::Service::Deferred::Thunk
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 DESCRIPTION
 

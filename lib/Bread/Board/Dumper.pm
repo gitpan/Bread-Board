@@ -2,7 +2,7 @@ package Bread::Board::Dumper;
 BEGIN {
   $Bread::Board::Dumper::AUTHORITY = 'cpan:STEVAN';
 }
-$Bread::Board::Dumper::VERSION = '0.31';
+$Bread::Board::Dumper::VERSION = '0.32';
 use Moose;
 
 sub dump {
@@ -57,7 +57,7 @@ Bread::Board::Dumper
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 SYNOPSIS
 

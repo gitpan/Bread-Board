@@ -2,7 +2,7 @@ package Bread::Board::Dependency;
 BEGIN {
   $Bread::Board::Dependency::AUTHORITY = 'cpan:STEVAN';
 }
-$Bread::Board::Dependency::VERSION = '0.31';
+$Bread::Board::Dependency::VERSION = '0.32';
 use Moose;
 
 use Bread::Board::Service;
@@ -62,7 +62,7 @@ Bread::Board::Dependency
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 DESCRIPTION
 

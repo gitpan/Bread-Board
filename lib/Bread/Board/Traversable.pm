@@ -2,7 +2,7 @@ package Bread::Board::Traversable;
 BEGIN {
   $Bread::Board::Traversable::AUTHORITY = 'cpan:STEVAN';
 }
-$Bread::Board::Traversable::VERSION = '0.31';
+$Bread::Board::Traversable::VERSION = '0.32';
 use Moose::Role;
 
 with 'MooseX::Clone' => { -version => 0.05 };
@@ -120,7 +120,7 @@ Bread::Board::Traversable
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 SYNOPSIS
 

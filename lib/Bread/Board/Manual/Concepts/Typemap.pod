@@ -13,7 +13,7 @@ Bread::Board::Manual::Concepts::Typemap - An overview of the typemapping feature
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 INTRODUCTION
 

@@ -2,7 +2,7 @@ package Bread::Board::ConstructorInjection;
 BEGIN {
   $Bread::Board::ConstructorInjection::AUTHORITY = 'cpan:STEVAN';
 }
-$Bread::Board::ConstructorInjection::VERSION = '0.31';
+$Bread::Board::ConstructorInjection::VERSION = '0.32';
 use Moose;
 
 use Try::Tiny;
@@ -51,7 +51,7 @@ Bread::Board::ConstructorInjection
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 DESCRIPTION
 

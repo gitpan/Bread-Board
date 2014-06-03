@@ -2,7 +2,7 @@ package Bread::Board::SetterInjection;
 BEGIN {
   $Bread::Board::SetterInjection::AUTHORITY = 'cpan:STEVAN';
 }
-$Bread::Board::SetterInjection::VERSION = '0.31';
+$Bread::Board::SetterInjection::VERSION = '0.32';
 use Moose;
 
 use Bread::Board::Types;
@@ -36,7 +36,7 @@ Bread::Board::SetterInjection
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 DESCRIPTION
 

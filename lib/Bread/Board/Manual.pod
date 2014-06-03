@@ -13,7 +13,7 @@ Bread::Board::Manual - A manual for Bread::Board
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 INTRODUCTION
 

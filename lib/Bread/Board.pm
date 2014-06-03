@@ -2,7 +2,7 @@ package Bread::Board;
 BEGIN {
   $Bread::Board::AUTHORITY = 'cpan:STEVAN';
 }
-$Bread::Board::VERSION = '0.31';
+$Bread::Board::VERSION = '0.32';
 use strict;
 use warnings;
 use Carp qw(confess);
@@ -252,7 +252,7 @@ Bread::Board - A solderless way to wire up your application components
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 SYNOPSIS
 
